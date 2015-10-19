@@ -21,7 +21,7 @@
         <repository name="netBeansMDR">
             <models>
                 <model>
-                    <uri>${model.uri}</uri>
+                    <uri>${project.basedir}/src/main/uml/javaforumModel.xml</uri>
                     <!-- List any additional referenced models needed for code generation here, even if already referenced internally within the model file -->
                     <!--uri>file:${project.basedir}/src/main/uml/AdditionalModel.emx</uri-->
                     <moduleSearchLocations>
