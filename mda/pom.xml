@@ -101,7 +101,7 @@
         </plugins>
     </build>
     <properties>
-        <model.uri>file:${project.basedir}/src/main/uml/javaforum.xmi</model.uri>
+        <model.uri>file:${project.basedir}/src/main/uml/model.xml</model.uri>
         <javaVersion>${java.version}</javaVersion>
         <filter></filter>
         <validation>true</validation>

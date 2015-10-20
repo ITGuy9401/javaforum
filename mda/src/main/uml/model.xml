@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- <!DOCTYPE XMI SYSTEM "uml14xmi12.dtd"> -->
 
-<XMI xmi.version='1.2' timestamp='Tue Oct 20 21:48:46 CEST 2015' xmlns:UML='omg.org/UML/1.4'>
+<XMI xmi.version='1.2' timestamp='Tue Oct 20 21:54:45 CEST 2015' xmlns:UML='omg.org/UML/1.4'>
 	<XMI.header>
 		<XMI.documentation>
 			<XMI.exporter>MagicDraw UML</XMI.exporter>
@@ -119,42 +119,6 @@
 							<selectionMode xmi.value='1'/>
 						</mdElement>
 						<mdElement elementClass='FileProperty'>
-							<value>&lt;maven2.repository&gt;\org\andromda\profiles\uml14\andromda-profile\3.2\andromda-profile-3.2.xml.zip</value>
-							<selectionMode xmi.value='1'/>
-						</mdElement>
-						<mdElement elementClass='FileProperty'>
-							<value>&lt;maven2.repository&gt;\org\andromda\profiles\uml14\andromda-profile-datatype\3.2\andromda-profile-datatype-3.2.xml.zip</value>
-							<selectionMode xmi.value='1'/>
-						</mdElement>
-						<mdElement elementClass='FileProperty'>
-							<value>&lt;maven2.repository&gt;\org\andromda\profiles\uml14\andromda-profile-meta\3.2\andromda-profile-meta-3.2.xml.zip</value>
-							<selectionMode xmi.value='1'/>
-						</mdElement>
-						<mdElement elementClass='FileProperty'>
-							<value>&lt;maven2.repository&gt;\org\andromda\profiles\uml14\andromda-profile-persistence\3.2\andromda-profile-persistence-3.2.xml.zip</value>
-							<selectionMode xmi.value='1'/>
-						</mdElement>
-						<mdElement elementClass='FileProperty'>
-							<value>&lt;maven2.repository&gt;\org\andromda\profiles\uml14\andromda-profile-presentation\3.2\andromda-profile-presentation-3.2.xml.zip</value>
-							<selectionMode xmi.value='1'/>
-						</mdElement>
-						<mdElement elementClass='FileProperty'>
-							<value>&lt;maven2.repository&gt;\org\andromda\profiles\uml14\andromda-profile-process\3.2\andromda-profile-process-3.2.xml.zip</value>
-							<selectionMode xmi.value='1'/>
-						</mdElement>
-						<mdElement elementClass='FileProperty'>
-							<value>&lt;maven2.repository&gt;\org\andromda\profiles\uml14\andromda-profile-service\3.2\andromda-profile-service-3.2.xml.zip</value>
-							<selectionMode xmi.value='1'/>
-						</mdElement>
-						<mdElement elementClass='FileProperty'>
-							<value>&lt;maven2.repository&gt;\org\andromda\profiles\uml14\andromda-profile-webservice\3.2\andromda-profile-webservice-3.2.xml.zip</value>
-							<selectionMode xmi.value='1'/>
-						</mdElement>
-						<mdElement elementClass='FileProperty'>
-							<value>&lt;maven2.repository&gt;\org\andromda\profiles\uml14\andromda-profile-xml\3.2\andromda-profile-xml-3.2.xml.zip</value>
-							<selectionMode xmi.value='1'/>
-						</mdElement>
-						<mdElement elementClass='FileProperty'>
 							<value>&lt;maven2.repository&gt;\org\andromda\profiles\uml14\andromda-profile\3.2</value>
 							<selectionMode xmi.value='1'/>
 						</mdElement>
@@ -207,7 +171,7 @@
 					<mdElement elementClass='NumberProperty'>
 						<propertyID>LAST_INTERFACE_STYLE</propertyID>
 						<propertyDescriptionID>LAST_INTERFACE_STYLE_DESCRIPTION</propertyDescriptionID>
-						<value xmi.value='2.0'/>
+						<value xmi.value='0.0'/>
 						<type xmi.value='0'/>
 						<lowRange xmi.value='0.0'/>
 						<highRange xmi.value='1.0'/>
@@ -226,7 +190,7 @@
 					<mdElement elementClass='NumberProperty'>
 						<propertyID>BROWSER_DIVIDER_LOCATION</propertyID>
 						<propertyDescriptionID>BROWSER_DIVIDER_LOCATION_DESCRIPTION</propertyDescriptionID>
-						<value xmi.value='-1.0'/>
+						<value xmi.value='481.0'/>
 						<type xmi.value='0'/>
 						<lowRange xmi.value='-1.0'/>
 						<highRange xmi.value='2.147483647E9'/>
@@ -234,13 +198,13 @@
 					<mdElement elementClass='ChoiceProperty'>
 						<propertyID>BROWSER_BOUNDS</propertyID>
 						<propertyDescriptionID>BROWSER_BOUNDS_DESCRIPTION</propertyDescriptionID>
-						<choice xmi.value=''/>
+						<choice xmi.value='1^1^479^839'/>
 						<index xmi.value='-1'/>
 					</mdElement>
 					<mdElement elementClass='BooleanProperty'>
 						<propertyID>IS_DOCS_TAB_VISIBLE</propertyID>
 						<propertyDescriptionID>IS_DOCS_TAB_VISIBLE_DESCRIPTION</propertyDescriptionID>
-						<value xmi.value='true'/>
+						<value xmi.value='false'/>
 					</mdElement>
 					<mdElement elementClass='StringProperty'>
 						<propertyID>BROWSER_LAYOUT</propertyID>
@@ -294,7 +258,7 @@
 					<mdElement elementClass='StringProperty'>
 						<propertyID>INFO_PROPERTY</propertyID>
 						<propertyDescriptionID>INFO_PROPERTY_DESCRIPTION</propertyDescriptionID>
-						<value>c 3f 69 8 7a 48 2f 2e 5f 66 25 39 d3 f8 c5 45 44 1f 36 1d da 36 98 7c eb 9e 8c 5c 5c 1f 85 a4 81 f0 49 1a cd a0 5d a7 f8 e9 87 2d 7a 85 a6 c8 fb 57 2d cd b9 a 9a 0 1c 7b 96 1 b9 63 2f 88 44 16 eb 8c 1b a2 9f 35 </value>
+						<value>c 3f 69 8 7a 48 2f 2e 5f 66 25 39 d3 f8 c5 45 44 1f 36 1d da 36 98 7c eb 9f 80 5c 5c 1c 85 a4 81 f0 49 1a cd a0 5d a7 f8 e9 87 2d 7a 85 a6 c8 fb 57 2d cd b9 a 9a 0 1c 7b 96 1 b9 63 2f 88 44 16 eb 8c 1b a2 9f 35 </value>
 						<multiline xmi.value='false'/>
 					</mdElement>
 				</mdElement>
@@ -1738,22 +1702,6 @@
 					<extendableByDiagram xmi.value='false'/>
 					<extendableByStereotype xmi.value='false'/>
 					<name>Implementation Diagram</name>
-					<propertyManagerID>_9_0_be00301_1102495862296_461313_216</propertyManagerID>
-					<parentPropertyManager>_9_5_1_4dd607d4_1445369551119_595665_33</parentPropertyManager>
-					<mdElement elementClass='ChoiceProperty'>
-						<propertyID>LINK_LINE_STYLE</propertyID>
-						<propertyDescriptionID>LINK_LINE_STYLE_DESCRIPTION</propertyDescriptionID>
-						<value>OBLIQUE</value>
-						<choice xmi.value='RECTILINEAR^OBLIQUE^BEZIER'/>
-						<index xmi.value='1'/>
-					</mdElement>
-				</mdElement>
-				<mdElement elementClass='PropertyManagerByDiagram'>
-					<diagramType>Implementation Diagram</diagramType>
-					<removable xmi.value='true'/>
-					<extendableByDiagram xmi.value='false'/>
-					<extendableByStereotype xmi.value='false'/>
-					<name>Implementation Diagram</name>
 					<propertyManagerID>_9_0_be00301_1102495986564_458307_303</propertyManagerID>
 					<parentPropertyManager>_9_5_1_4dd607d4_1445369551134_24085_36</parentPropertyManager>
 					<mdElement elementClass='ChoiceProperty'>
@@ -1777,6 +1725,22 @@
 						<propertyGroup>OPERATIONS</propertyGroup>
 						<propertyDescriptionID>SUPPRESS_CLASS_OPERATIONS_DESCRIPTION</propertyDescriptionID>
 						<value xmi.value='true'/>
+					</mdElement>
+				</mdElement>
+				<mdElement elementClass='PropertyManagerByDiagram'>
+					<diagramType>Implementation Diagram</diagramType>
+					<removable xmi.value='true'/>
+					<extendableByDiagram xmi.value='false'/>
+					<extendableByStereotype xmi.value='false'/>
+					<name>Implementation Diagram</name>
+					<propertyManagerID>_9_0_be00301_1102495862296_461313_216</propertyManagerID>
+					<parentPropertyManager>_9_5_1_4dd607d4_1445369551119_595665_33</parentPropertyManager>
+					<mdElement elementClass='ChoiceProperty'>
+						<propertyID>LINK_LINE_STYLE</propertyID>
+						<propertyDescriptionID>LINK_LINE_STYLE_DESCRIPTION</propertyDescriptionID>
+						<value>OBLIQUE</value>
+						<choice xmi.value='RECTILINEAR^OBLIQUE^BEZIER'/>
+						<index xmi.value='1'/>
 					</mdElement>
 				</mdElement>
 				<mdElement elementClass='ExtendableManager'>
