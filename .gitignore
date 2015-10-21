@@ -2,3 +2,4 @@
 m2eclipse.bat
 *.log
 *.exc
+*/target/*
