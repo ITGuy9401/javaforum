@@ -542,7 +542,7 @@
             For Derby use: Derby
         -->
         <sql.mappings>
-            MySQL
+            Oracle9i
         </sql.mappings>
         <!--
         Change this for the appropriate database
@@ -568,7 +568,7 @@
         For Sybase Anywhere use: org.hibernate.dialect.SybaseAnywhereDialect
         -->
         <hibernate.dialect>
-            org.hibernate.dialect.MySQL5InnoDBDialect
+            org.hibernate.dialect.Oracle10gDialect
         </hibernate.dialect>
         <tomcat.home>${env.CATALINA_HOME}</tomcat.home>
         <application.id>javaforum</application.id>
