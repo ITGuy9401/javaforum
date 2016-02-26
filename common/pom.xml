@@ -12,14 +12,6 @@
     <name>JavaForum Common</name>
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>javaforum-mda</artifactId>
-            <version>${project.version}</version>
-            <type>pom</type>
-            <scope>provided</scope>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
         </dependency>
