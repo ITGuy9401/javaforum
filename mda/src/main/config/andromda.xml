@@ -112,72 +112,77 @@
         <!-- See http://docs.andromda.org/andromda-cartridges/andromda-spring-cartridge/namespace.html -->
         <namespace name="spring">
             <properties>
-                <property name="dataSource">${dataSource}</property>
-                <property name="username">${jdbc.username}</property>
-                <property name="password">${jdbc.password}</property>
-                <property name="driver">${jdbc.driver}</property>
-                <property name="connectionUrl">${jdbc.url}</property>
-                <property name="hibernateDialect">${hibernate.dialect}</property>
-                <property name="hibernateHbm2DDLAuto">update</property>
-                <property name="hibernateQueryUseNamedParameters">true</property>
-                <property name="hibernateEnableCache">false</property>
-                <property name="sessionFactory">org.springframework.orm.hibernate3.LocalSessionFactoryBean</property>
-                <property name="localTransactionManager">org.springframework.orm.hibernate3.HibernateTransactionManager</property>
-                <property name="hibernateCacheProvider">net.sf.ehcache.hibernate.EhCacheProvider</property>
-                <property name="hibernateQueryCacheFactory">org.hibernate.cache.StandardQueryCacheFactory</property>
-                <property name="mergeMappingsUri">file:${conf.dir}/mappings/SpringMergeMappings.xml</property>
-                <property name="transactionManager">org.springframework.orm.hibernate3.HibernateTransactionManager</property>
-                <property name="hibernateInheritanceStrategy">${hibernate.inheritance.strategy}</property>
-                <property name="springTypesPackage">${application.package}</property>
-                <!-- Specialized use: OSGI, RichClient, remoting, generated JDBC tests -->
-                <!--property name="advice-impls">${core.generated.dir}</property>
-                <property name="remoting-war-support">${core.manual.java.dir}</property>
-                <property name="open-session-in-view">${core.manual.java.dir}</property>
-                <property name="client-config">${core.manual.test.dir}</property>
-                <property name="client">${core.manual.java.dir}</property>
-                <property name="client-test">${core.manual.test.dir}</property>
-                <property name="osgi">${core.generated.dir}</property-->
-                <property name="daos">${core.generated.dir}</property>
-                <property name="dao-impls">${core.manual.java.dir}</property>
-                <property name="spring-configuration">${core.generated.dir}</property>
-                <property name="server-test-config">${core.manual.test.resources}</property>
-                <property name="server-test">${core.generated.test.dir}</property>
-                <property name="services">${core.generated.dir}</property>
-                <property name="service-impls">${core.manual.java.dir}</property>
-                <property name="service-interfaces">${core.generated.dir}</property>
-                <property name="criteria">${common.generated.dir}</property>
-                <property name="value-objects">${common.generated.dir}</property>
+               <property name="springTypesPackage">eu.arcangelovicedomini.javaforum</property>
+				
+				<property name="dataSource">java:comp/env/jdbc/JavaForumDS</property>
+				
+				<!-- Customizzo i nomi dei file generici per evitare problemi di ominimia -->
+				<property name="applicationContext">applicationContext-JF.xml</property>
+				<property name="applicationContextDataSource">applicationContext-JF-dataSource.xml</property>
+				<property name="applicationContextLocalDataSource">applicationContext-JF-localDataSource.xml</property>
+				<property name="beanRefFactory">beanRefFactory-JF.xml</property>
+				<property name="beanRefFactoryId">beanRefFactoryJF</property>
+				
+				<property name="username">${jdbc.username}</property>
+				<property name="password">${jdbc.password}</property>
+				<property name="driver">${jdbc.driver}</property>
+				<property name="connectionUrl">${jdbc.url}</property>
+				<property name="hibernateDialect">${hibernate.dialect}</property>
+				
+				<!-- Disabilita il controllo dei parametri su DAO e service -->
+				<property name="parameterRequiredCheck">false</property>
+				
+				<property name="hibernateShowSql">false</property>
+				<property name="hibernateQueryUseNamedParameters">true</property>
+				<property name="sessionFactory">org.springframework.orm.hibernate3.LocalSessionFactoryBean</property>
+				<property name="localTransactionManager">org.springframework.orm.hibernate3.HibernateTransactionManager</property>
+				<property name="hibernateCacheProvider">org.hibernate.cache.EhCacheProvider</property>
+				<property name="hibernateQueryCacheFactory">org.hibernate.cache.StandardQueryCacheFactory</property>
+				<property name="transactionManager">org.springframework.transaction.jta.JtaTransactionManager</property>
+				<property name="hibernateInheritanceStrategy">subclass</property>
+				<property name="daos">${project.basedir}/../core/gen-src</property>
+				<property name="dao-impls">${project.basedir}/../core/src/main/java</property>
+				<property name="spring-configuration">${project.basedir}/../core/gen-src</property>
+				<property name="services">${project.basedir}/../core/gen-src</property>
+				<property name="service-impls">${project.basedir}/../core/src/main/java</property>
+				<property name="service-interfaces">${project.basedir}/../core/gen-src</property>
+				<property name="criteria">${project.basedir}/../core/gen-src</property>
+				<property name="value-objects">${project.basedir}/../core/gen-src</property>
+				<property name="mergeMappingsUri">file:${project.basedir}/src/main/config/SpringMergeMappings.xml</property>
+				<property name="enableDaoPropertiesCreateMethod">false</property>
             </properties>
         </namespace>
         <!-- See http://docs.andromda.org/andromda-cartridges/andromda-hibernate-cartridge/namespace.html -->
         <namespace name="hibernate">
             <properties>
-                <property name="hibernateEnableCache">false</property>
-                <property name="hibernateEnableAssociationsCache">false</property>
-                <property name="hibernateTypeMappingsUri">Hibernate</property>
-                <property name="hibernateInheritanceStrategy">${hibernate.inheritance.strategy}</property>
-                <property name="defaultHibernateGeneratorClass">${hibernate.generatorClass}</property>
-                <property name="hibernateAggregationCascade">delete</property>
-                <property name="hibernateDefaultCascade">none</property>
-                <property name="entities">${core.generated.dir}</property>
-                <property name="entity-impls">${core.manual.java.dir}</property>
-                <property name="entity-mappings">${core.generated.dir}</property>
-                <property name="user-types">${core.generated.dir}</property>
-                <property name="customTypesPackage">${application.package}</property>
-                <property name="compositionDefinesEagerLoading">true</property>
-                <property name="cache">${core.generated.dir}</property>
+                <property name="customTypesPackage">eu.arcangelovicedomini.javaforum</property>
+
+				<property name="hibernateTypeMappingsUri">file:${project.basedir}/src/main/config/HibernateExtension.xml</property>
+				<property name="hibernateEnableCache">false</property>
+				<property name="hibernateEnableAssociationsCache">false</property>
+				<property name="hibernateInheritanceStrategy">subclass</property>
+				<property name="defaultHibernateGeneratorClass">native</property>
+				<property name="hibernateCompositionCascade">none</property>
+				<property name="hibernateAggregationCascade">none</property>
+				<property name="hibernateDefaultCascade">none</property>
+				<property name="pluralizeAssociationEndNames">false</property>
+				<property name="specificCollectionInterfaces">true</property>
+				<property name="entities">${project.basedir}/../core/gen-src</property>
+				<property name="entity-impls">${project.basedir}/../core/src/main/java</property>
+				<property name="user-types">${project.basedir}/../core/gen-src</property>
+				<property name="entity-mappings">${project.basedir}/../core/gen-src</property>
+				<property name="compositionDefinesEagerLoading">false</property>
+				<property name="cache">${project.basedir}/../core/gen-src</property>
+				<property name="mergeMappingsUri">file:${project.basedir}/src/main/config/HibernateMergeMappings.xml</property>
             </properties>
         </namespace>
         <!-- See http://docs.andromda.org/andromda-cartridges/andromda-java-cartridge/namespace.html -->
         <namespace name="java">
             <properties>
-                <property name="generateEqualPropertiesMethod">true</property>
-                <property name="enumerations">${common.generated.dir}</property>
-                <property name="exceptions">${common.generated.dir}</property>
-                <property name="value-objects">${common.generated.dir}</property>
-                <property name="interfaces">${common.generated.dir}</property>
-                <property name="services">${core.generated.dir}</property>
-                <property name="service-impls">${core.manual.java.dir}</property>
+                <property name="enumerations">${project.basedir}/../core/gen-src</property>
+				<property name="exceptions">${project.basedir}/../core/gen-src</property>
+				<property name="value-objects">${project.basedir}/../core/gen-src</property>
+				<property name="interfaces">${project.basedir}/../core/gen-src</property>
             </properties>
         </namespace>
     </namespaces>
