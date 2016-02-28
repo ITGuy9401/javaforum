@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <!-- ========================= GENERAL DEFINITIONS ========================= -->
+
+    <!-- Message source for this context, loaded from localized "messages_xx" files -->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename"><value>messages</value></property>
+    </bean>
+
+    <!-- applicationContext merge-point -->
+    <!-- Hibernate SessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource"><ref bean="dataSource"/></property>
+        <property name="mappingResources">
+            <list>
+                <value>eu/arcangelovicedomini/javaforum/core/domain/Forum.hbm.xml</value>
+                <value>eu/arcangelovicedomini/javaforum/core/domain/Area.hbm.xml</value>
+                <value>eu/arcangelovicedomini/javaforum/core/domain/Section.hbm.xml</value>
+                <value>eu/arcangelovicedomini/javaforum/core/domain/Thread.hbm.xml</value>
+                <value>eu/arcangelovicedomini/javaforum/core/domain/Post.hbm.xml</value>
+                <value>eu/arcangelovicedomini/javaforum/core/domain/User.hbm.xml</value>
+                <value>eu/arcangelovicedomini/javaforum/core/domain/Profile.hbm.xml</value>
+                <value>eu/arcangelovicedomini/javaforum/core/domain/UserConfiguration.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.cache.use_query_cache">false</prop>
+                <prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</prop>
+                <prop key="hibernate.cache.query_cache_factory">org.hibernate.cache.StandardQueryCacheFactory</prop>
+                <!-- add specific (non-supported in the Spring cartridge) hibernate properties here -->
+            </props>
+        </property>
+    </bean>
+
+    <!-- The Hibernate interceptor -->
+    <bean id="hibernateInterceptor" class="org.springframework.orm.hibernate.HibernateInterceptor">
+        <property name="sessionFactory"><ref bean="sessionFactory"/></property>
+    </bean>
+
+    <!-- Forum Entity Proxy with inner Forum Entity implementation -->
+    <bean id="forumDao" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <bean class="eu.arcangelovicedomini.javaforum.core.domain.ForumDaoImpl">
+                <property name="sessionFactory"><ref local="sessionFactory"/></property>
+            </bean>
+        </property>
+        <property name="proxyInterfaces">
+            <value>eu.arcangelovicedomini.javaforum.core.domain.ForumDao</value>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>hibernateInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Area Entity Proxy with inner Area Entity implementation -->
+    <bean id="areaDao" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <bean class="eu.arcangelovicedomini.javaforum.core.domain.AreaDaoImpl">
+                <property name="sessionFactory"><ref local="sessionFactory"/></property>
+            </bean>
+        </property>
+        <property name="proxyInterfaces">
+            <value>eu.arcangelovicedomini.javaforum.core.domain.AreaDao</value>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>hibernateInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Section Entity Proxy with inner Section Entity implementation -->
+    <bean id="sectionDao" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <bean class="eu.arcangelovicedomini.javaforum.core.domain.SectionDaoImpl">
+                <property name="sessionFactory"><ref local="sessionFactory"/></property>
+            </bean>
+        </property>
+        <property name="proxyInterfaces">
+            <value>eu.arcangelovicedomini.javaforum.core.domain.SectionDao</value>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>hibernateInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Thread Entity Proxy with inner Thread Entity implementation -->
+    <bean id="threadDao" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <bean class="eu.arcangelovicedomini.javaforum.core.domain.ThreadDaoImpl">
+                <property name="sessionFactory"><ref local="sessionFactory"/></property>
+            </bean>
+        </property>
+        <property name="proxyInterfaces">
+            <value>eu.arcangelovicedomini.javaforum.core.domain.ThreadDao</value>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>hibernateInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Post Entity Proxy with inner Post Entity implementation -->
+    <bean id="postDao" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <bean class="eu.arcangelovicedomini.javaforum.core.domain.PostDaoImpl">
+                <property name="sessionFactory"><ref local="sessionFactory"/></property>
+            </bean>
+        </property>
+        <property name="proxyInterfaces">
+            <value>eu.arcangelovicedomini.javaforum.core.domain.PostDao</value>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>hibernateInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- User Entity Proxy with inner User Entity implementation -->
+    <bean id="userDao" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <bean class="eu.arcangelovicedomini.javaforum.core.domain.UserDaoImpl">
+                <property name="sessionFactory"><ref local="sessionFactory"/></property>
+            </bean>
+        </property>
+        <property name="proxyInterfaces">
+            <value>eu.arcangelovicedomini.javaforum.core.domain.UserDao</value>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>hibernateInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Profile Entity Proxy with inner Profile Entity implementation -->
+    <bean id="profileDao" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <bean class="eu.arcangelovicedomini.javaforum.core.domain.ProfileDaoImpl">
+                <property name="sessionFactory"><ref local="sessionFactory"/></property>
+            </bean>
+        </property>
+        <property name="proxyInterfaces">
+            <value>eu.arcangelovicedomini.javaforum.core.domain.ProfileDao</value>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>hibernateInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- UserConfiguration Entity Proxy with inner UserConfiguration Entity implementation -->
+    <bean id="userConfigurationDao" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <bean class="eu.arcangelovicedomini.javaforum.core.domain.UserConfigurationDaoImpl">
+                <property name="sessionFactory"><ref local="sessionFactory"/></property>
+            </bean>
+        </property>
+        <property name="proxyInterfaces">
+            <value>eu.arcangelovicedomini.javaforum.core.domain.UserConfigurationDao</value>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>hibernateInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- ========================= Start of SERVICE DEFINITIONS ========================= -->
+
+    <!-- ========================= End of SERVICE DEFINITIONS ========================= -->
+
+</beans>

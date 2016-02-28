@@ -109,11 +109,11 @@
         <andromda.project>${project.basedir}/..</andromda.project>
         <conf.dir>${project.basedir}/src/main/config</conf.dir>
         <!-- cartridge output locations -->
-        <common.generated.dir>${project.basedir}/../common/gen-src/main/java</common.generated.dir>
-        <common.manual.dir>${project.basedir}/../common/src/main/java</common.manual.dir>
-        <core.generated.dir>${project.basedir}/../core/gen-src/main/java</core.generated.dir>
-        <core.manual.dir>${project.basedir}/../core/src/main/java</core.manual.dir>
-        <core.manual.java.dir>${project.basedir}/../core/src/main/java</core.manual.java.dir>
+        <common.generated.dir>${project.basedir}/../common/gen-src</common.generated.dir>
+        <common.manual.dir>${project.basedir}/../common/src/main</common.manual.dir>
+        <core.generated.dir>${project.basedir}/../core/gen-src</core.generated.dir>
+        <core.manual.dir>${project.basedir}/../core/src/main</core.manual.dir>
+        <core.manual.java.dir>${core.manual.dir}/java</core.manual.java.dir>
         <core.manual.test.resources>${project.basedir}/../core/src/test/resources</core.manual.test.resources>
         <core.generated.test.dir>${project.basedir}/../core/gen-src/test/java</core.generated.test.dir>
         <core.manual.test.dir>${project.basedir}/../core/src/test/java</core.manual.test.dir>
