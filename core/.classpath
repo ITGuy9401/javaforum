@@ -24,8 +24,8 @@
 	</classpathentry>
 	<classpathentry kind="src" output="target/classes" path="gen-src">
 		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
