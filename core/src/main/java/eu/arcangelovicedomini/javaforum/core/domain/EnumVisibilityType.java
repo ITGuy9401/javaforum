@@ -6,7 +6,7 @@ package eu.arcangelovicedomini.javaforum.core.domain;
 public enum EnumVisibilityType
     implements java.io.Serializable
 {
-    PRIVATE, FRIENDS, PUBLIC;
+    PRIVATE, FRIENDS, REGISTERED_USERS, PUBLIC;
 
 
     /**

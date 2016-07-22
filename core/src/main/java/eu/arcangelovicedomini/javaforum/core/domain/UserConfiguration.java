@@ -2,9 +2,17 @@ package eu.arcangelovicedomini.javaforum.core.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  * 
  */
+@Table(name = "USER_CONFIGURATION")
 public class UserConfiguration implements Serializable {
 	/**
 	 * The serial version UID of this class. Needed for serialization.
@@ -16,6 +24,9 @@ public class UserConfiguration implements Serializable {
 	/**
 	 * 
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
 	public java.lang.Long getUserConfigurationId() {
 		return this.userConfigurationId;
 	}
@@ -29,6 +40,7 @@ public class UserConfiguration implements Serializable {
 	/**
 	 * 
 	 */
+	@Column(name = "ACCESS_TYPE")
 	public EnumAccessType getAccessType() {
 		return this.accessType;
 	}
@@ -42,6 +54,7 @@ public class UserConfiguration implements Serializable {
 	/**
 	 * 
 	 */
+	@Column(name = "ATTRIBUTE")
 	public java.lang.String getAttribute() {
 		return this.attribute;
 	}
@@ -55,6 +68,7 @@ public class UserConfiguration implements Serializable {
 	/**
 	 * 
 	 */
+	@Column(name = "VISIBILITY")
 	public EnumVisibilityType getVisibility() {
 		return this.visibility;
 	}
@@ -68,6 +82,8 @@ public class UserConfiguration implements Serializable {
 	/**
 	 * 
 	 */
+	@Column(name = "USER_ID")
+	@ManyToOne(targetEntity = User.class)
 	public User getUser() {
 		return this.user;
 	}

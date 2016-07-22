@@ -1,22 +1,28 @@
 package eu.arcangelovicedomini.javaforum.core.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * 
  */
+@Table(name = "USER")
 public class User implements Serializable {
 	/**
 	 * The serial version UID of this class. Needed for serialization.
 	 */
 	private static final long serialVersionUID = -7401272637454675684L;
 
-	private java.lang.Long userId;
+	private Long userId;
 
 	/**
 	 * 
@@ -24,37 +30,39 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID")
-	public java.lang.Long getUserId() {
+	public Long getUserId() {
 		return this.userId;
 	}
 
-	public void setUserId(java.lang.Long userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
-	private java.lang.String userName;
+	private String userName;
 
 	/**
 	 * 
 	 */
-	public java.lang.String getUserName() {
+	@Column(name = "USER_NAME", nullable = false, unique = true)
+	public String getUserName() {
 		return this.userName;
 	}
 
-	public void setUserName(java.lang.String userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
-	private java.lang.String password;
+	private String password;
 
 	/**
 	 * 
 	 */
-	public java.lang.String getPassword() {
+	@Column(name = "PASSWORD", nullable = false)
+	public String getPassword() {
 		return this.password;
 	}
 
-	public void setPassword(java.lang.String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -63,6 +71,8 @@ public class User implements Serializable {
 	/**
 	 * 
 	 */
+	@Column(name = "PROFILE_ID")
+	@OneToOne(mappedBy = "profile", targetEntity = Profile.class)
 	public Profile getProfile() {
 		return this.profile;
 	}
@@ -71,16 +81,17 @@ public class User implements Serializable {
 		this.profile = profile;
 	}
 
-	private java.util.Set<UserConfiguration> configurations = new java.util.HashSet<UserConfiguration>();
+	private Set<UserConfiguration> configurations = new HashSet<UserConfiguration>();
 
 	/**
 	 * 
 	 */
-	public java.util.Set<UserConfiguration> getConfigurations() {
+	@OneToMany(mappedBy = "user", targetEntity = UserConfiguration.class)
+	public Set<UserConfiguration> getConfigurations() {
 		return this.configurations;
 	}
 
-	public void setConfigurations(java.util.Set<UserConfiguration> configurations) {
+	public void setConfigurations(Set<UserConfiguration> configurations) {
 		this.configurations = configurations;
 	}
 
@@ -128,8 +139,8 @@ public class User implements Serializable {
 		 * Constructs a new instance of {@link User}, taking all possible
 		 * properties (except the identifier(s))as arguments.
 		 */
-		public static User newInstance(java.lang.String userName, java.lang.String password, Profile profile,
-				java.util.Set<UserConfiguration> configurations) {
+		public static User newInstance(String userName, String password, Profile profile,
+				Set<UserConfiguration> configurations) {
 			final User entity = new User();
 			entity.setUserName(userName);
 			entity.setPassword(password);
