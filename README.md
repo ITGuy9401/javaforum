@@ -1,2 +1,5 @@
-# javaforum
-Open Source Forum CMS written in Java &amp; HTML5/AngularJS
+# JavaForum
+## The Project
+JavaForum is a forum CMS written in Java Enterprise Edition & HTML5/AngularJS
+## Licence
+JavaForum is published by Arcangelo Vicedomini under the GPLv3 Licence
