@@ -4,6 +4,13 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 /**
  * 
  */
@@ -18,6 +25,9 @@ public class Area implements Serializable {
 	/**
 	 * 
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
 	public Long getAreaId() {
 		return this.areaId;
 	}
@@ -31,6 +41,7 @@ public class Area implements Serializable {
 	/**
 	 * 
 	 */
+	@Column(name = "ID")
 	public String getTitle() {
 		return this.title;
 	}
@@ -44,6 +55,7 @@ public class Area implements Serializable {
 	/**
 	 * 
 	 */
+	@ManyToOne(optional = false, targetEntity = Forum.class)
 	public Forum getForum() {
 		return this.forum;
 	}
@@ -57,6 +69,7 @@ public class Area implements Serializable {
 	/**
 	 * 
 	 */
+	@OneToMany(mappedBy = "area", targetEntity = Section.class)
 	public Set<Section> getSections() {
 		return this.sections;
 	}
