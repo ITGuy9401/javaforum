@@ -10,10 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * 
  */
+@Table(name = "AREA")
 public class Area implements Serializable {
 	/**
 	 * The serial version UID of this class. Needed for serialization.

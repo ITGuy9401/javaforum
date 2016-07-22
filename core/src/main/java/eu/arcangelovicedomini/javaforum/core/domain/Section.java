@@ -1,56 +1,72 @@
 package eu.arcangelovicedomini.javaforum.core.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * 
  */
+@Table(name = "SECTION")
 public class Section implements Serializable {
 	/**
 	 * The serial version UID of this class. Needed for serialization.
 	 */
 	private static final long serialVersionUID = -1832735461772371565L;
 
-	private java.lang.Long sectionId;
+	private Long sectionId;
 
 	/**
 	 * 
 	 */
-	public java.lang.Long getSectionId() {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
+	public Long getSectionId() {
 		return this.sectionId;
 	}
 
-	public void setSectionId(java.lang.Long sectionId) {
+	public void setSectionId(Long sectionId) {
 		this.sectionId = sectionId;
 	}
 
-	private java.lang.String title;
+	private String title;
 
 	/**
 	 * <p>
 	 * Title of the section
 	 * </p>
 	 */
-	public java.lang.String getTitle() {
+	@Column(name = "TITLE")
+	public String getTitle() {
 		return this.title;
 	}
 
-	public void setTitle(java.lang.String title) {
+	public void setTitle(String title) {
 		this.title = title;
 	}
 
-	private java.lang.String description;
+	private String description;
 
 	/**
 	 * <p>
 	 * Description of the section.
 	 * </p>
 	 */
-	public java.lang.String getDescription() {
+	public String getDescription() {
 		return this.description;
 	}
 
-	public void setDescription(java.lang.String description) {
+	@Column(name = "DESCRIPTION")
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
@@ -59,6 +75,7 @@ public class Section implements Serializable {
 	/**
 	 * 
 	 */
+	@ManyToOne(optional = false, targetEntity = Area.class)
 	public Area getArea() {
 		return this.area;
 	}
@@ -67,29 +84,31 @@ public class Section implements Serializable {
 		this.area = area;
 	}
 
-	private java.util.Set<Thread> threads = new java.util.HashSet<Thread>();
+	private Set<Thread> threads = new HashSet<Thread>();
 
 	/**
 	 * 
 	 */
-	public java.util.Set<Thread> getThreads() {
+	@OneToMany(mappedBy = "section", targetEntity = Thread.class)
+	public Set<Thread> getThreads() {
 		return this.threads;
 	}
 
-	public void setThreads(java.util.Set<Thread> threads) {
+	public void setThreads(Set<Thread> threads) {
 		this.threads = threads;
 	}
 
-	private java.util.Set<Section> childSections = new java.util.HashSet<Section>();
+	private Set<Section> childSections = new HashSet<Section>();
 
 	/**
 	 * 
 	 */
-	public java.util.Set<Section> getChildSections() {
+	@OneToMany(mappedBy = "fatherSection", targetEntity = Section.class)
+	public Set<Section> getChildSections() {
 		return this.childSections;
 	}
 
-	public void setChildSections(java.util.Set<Section> childSections) {
+	public void setChildSections(Set<Section> childSections) {
 		this.childSections = childSections;
 	}
 
@@ -98,6 +117,7 @@ public class Section implements Serializable {
 	/**
 	 * 
 	 */
+	@ManyToOne(targetEntity = Section.class)
 	public Section getFatherSection() {
 		return this.fatherSection;
 	}
@@ -136,25 +156,21 @@ public class Section implements Serializable {
 	}
 
 	/**
-	 * Constructs new instances of
-	 * {@link Section}.
+	 * Constructs new instances of {@link Section}.
 	 */
 	public static final class Factory {
 		/**
-		 * Constructs a new instance of
-		 * {@link Section}.
+		 * Constructs a new instance of {@link Section}.
 		 */
 		public static Section newInstance() {
 			return new Section();
 		}
 
 		/**
-		 * Constructs a new instance of
-		 * {@link Section}, taking
-		 * all required and/or read-only properties as arguments.
+		 * Constructs a new instance of {@link Section}, taking all required
+		 * and/or read-only properties as arguments.
 		 */
-		public static Section newInstance(java.lang.String title,
-				java.lang.String description) {
+		public static Section newInstance(String title, String description) {
 			final Section entity = new Section();
 			entity.setTitle(title);
 			entity.setDescription(description);
@@ -162,15 +178,11 @@ public class Section implements Serializable {
 		}
 
 		/**
-		 * Constructs a new instance of
-		 * {@link Section}, taking
-		 * all possible properties (except the identifier(s))as arguments.
+		 * Constructs a new instance of {@link Section}, taking all possible
+		 * properties (except the identifier(s))as arguments.
 		 */
-		public static Section newInstance(java.lang.String title,
-				java.lang.String description, Area area,
-				java.util.Set<Thread> threads,
-				java.util.Set<Section> childSections,
-				Section fatherSection) {
+		public static Section newInstance(String title, String description, Area area, Set<Thread> threads,
+				Set<Section> childSections, Section fatherSection) {
 			final Section entity = new Section();
 			entity.setTitle(title);
 			entity.setDescription(description);
