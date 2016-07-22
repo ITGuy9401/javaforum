@@ -4,3 +4,5 @@ m2eclipse.bat
 *.exc
 */target/*
 core/.classpath
+*.project
+*.settings
