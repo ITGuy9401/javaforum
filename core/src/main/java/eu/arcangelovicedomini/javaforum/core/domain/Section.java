@@ -75,6 +75,7 @@ public class Section implements Serializable {
 	/**
 	 * 
 	 */
+	@Column(name = "AREA_ID")
 	@ManyToOne(optional = false, targetEntity = Area.class)
 	public Area getArea() {
 		return this.area;
@@ -117,6 +118,7 @@ public class Section implements Serializable {
 	/**
 	 * 
 	 */
+	@Column(name = "FATHER_ID")
 	@ManyToOne(targetEntity = Section.class)
 	public Section getFatherSection() {
 		return this.fatherSection;

@@ -1,19 +1,15 @@
 package eu.arcangelovicedomini.javaforum.core.domain;
 
-/**
- * 
- */
-public enum EnumAccessType
-    implements java.io.Serializable
-{
-	AUTHUSER, PUBLIC;
-
-
-    /**
+public enum EnumNamePrefix 
+implements java.io.Serializable {
+	
+	MR, MRS, MISS, ENGINEER, ARCHITECT, DOCTOR;
+	
+	/**
      * The default constructor allowing
      * super classes to access it.
      */
-    private EnumAccessType()
+    private EnumNamePrefix()
     {
     }
 
@@ -24,9 +20,9 @@ public enum EnumAccessType
      * @param name the name to create the EnumAccessType from.
      * @return The enumeration literal named after the 'name' argument
      */
-    public static EnumAccessType fromString(String name)
+    public static EnumNamePrefix fromString(String name)
     {
-		return EnumAccessType.valueOf(name);
+		return EnumNamePrefix.valueOf(name);
 	}
 	
 	/**

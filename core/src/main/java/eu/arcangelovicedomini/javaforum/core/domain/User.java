@@ -2,6 +2,11 @@ package eu.arcangelovicedomini.javaforum.core.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * 
  */
@@ -16,6 +21,9 @@ public class User implements Serializable {
 	/**
 	 * 
 	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
 	public java.lang.Long getUserId() {
 		return this.userId;
 	}

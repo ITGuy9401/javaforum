@@ -1,78 +1,99 @@
 package eu.arcangelovicedomini.javaforum.core.domain;
 
 import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * 
  */
+@Table(name = "POST")
 public class Post implements Serializable {
 	/**
 	 * The serial version UID of this class. Needed for serialization.
 	 */
 	private static final long serialVersionUID = 4007626275325189842L;
 
-	private java.lang.Long postId;
+	private Long postId;
 
 	/**
 	 * 
 	 */
-	public java.lang.Long getPostId() {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
+	public Long getPostId() {
 		return this.postId;
 	}
 
-	public void setPostId(java.lang.Long postId) {
+	public void setPostId(Long postId) {
 		this.postId = postId;
 	}
 
-	private java.lang.String title;
+	private String title;
 
 	/**
 	 * 
 	 */
-	public java.lang.String getTitle() {
+	@Column(name = "TITLE")
+	public String getTitle() {
 		return this.title;
 	}
 
-	public void setTitle(java.lang.String title) {
+	public void setTitle(String title) {
 		this.title = title;
 	}
 
-	private java.lang.String message;
+	private String content;
 
 	/**
 	 * 
 	 */
-	public java.lang.String getMessage() {
-		return this.message;
+	@Column(name = "CONTENT")
+	public String getContent() {
+		return this.content;
 	}
 
-	public void setMessage(java.lang.String message) {
-		this.message = message;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
-	private java.sql.Timestamp createdOn;
+	private Date createdOn;
 
 	/**
 	 * 
 	 */
-	public java.sql.Timestamp getCreatedOn() {
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "CREATED_ON")
+	public Date getCreatedOn() {
 		return this.createdOn;
 	}
 
-	public void setCreatedOn(java.sql.Timestamp createdOn) {
+	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
 
-	private java.sql.Timestamp editedOn;
+	private Date editedOn;
 
 	/**
 	 * 
 	 */
-	public java.sql.Timestamp getEditedOn() {
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "EDITED_ON")
+	public Date getEditedOn() {
 		return this.editedOn;
 	}
 
-	public void setEditedOn(java.sql.Timestamp editedOn) {
+	public void setEditedOn(Date editedOn) {
 		this.editedOn = editedOn;
 	}
 
@@ -81,6 +102,8 @@ public class Post implements Serializable {
 	/**
 	 * 
 	 */
+	@Column(name = "THREAD_ID")
+	@ManyToOne(optional = false, targetEntity = Thread.class)
 	public Thread getThread() {
 		return this.thread;
 	}
@@ -94,6 +117,9 @@ public class Post implements Serializable {
 	/**
 	 * 
 	 */
+
+	@Column(name = "AUTHOR_ID")
+	@ManyToOne(optional = false, targetEntity = Profile.class)
 	public Profile getAuthor() {
 		return this.author;
 	}
@@ -107,6 +133,8 @@ public class Post implements Serializable {
 	/**
 	 * 
 	 */
+	@Column(name = "EDITOR_ID")
+	@ManyToOne(optional = false, targetEntity = Profile.class)
 	public Profile getEditor() {
 		return this.editor;
 	}
@@ -120,6 +148,8 @@ public class Post implements Serializable {
 	/**
 	 * 
 	 */
+	@Column(name = "NEW_VERSION_ID")
+	@OneToOne(mappedBy = "oldVersion", targetEntity = Post.class)
 	public Post getNewVersion() {
 		return this.newVersion;
 	}
@@ -133,6 +163,8 @@ public class Post implements Serializable {
 	/**
 	 * 
 	 */
+	@Column(name = "OLD_VERSION_ID")
+	@OneToOne(mappedBy = "newVersion", targetEntity = Post.class)
 	public Post getOldVersion() {
 		return this.oldVersion;
 	}
@@ -185,11 +217,10 @@ public class Post implements Serializable {
 		 * Constructs a new instance of {@link Post}, taking all required and/or
 		 * read-only properties as arguments.
 		 */
-		public static Post newInstance(java.lang.String title, java.lang.String message, java.sql.Timestamp createdOn,
-				Thread thread, Profile author) {
+		public static Post newInstance(String title, String content, Date createdOn, Thread thread, Profile author) {
 			final Post entity = new Post();
 			entity.setTitle(title);
-			entity.setMessage(message);
+			entity.setContent(content);
 			entity.setCreatedOn(createdOn);
 			entity.setThread(thread);
 			entity.setAuthor(author);
@@ -200,12 +231,11 @@ public class Post implements Serializable {
 		 * Constructs a new instance of {@link Post}, taking all possible
 		 * properties (except the identifier(s))as arguments.
 		 */
-		public static Post newInstance(java.lang.String title, java.lang.String message, java.sql.Timestamp createdOn,
-				java.sql.Timestamp editedOn, Thread thread, Profile author, Profile editor, Post newVersion,
-				Post oldVersion) {
+		public static Post newInstance(String title, String content, Date createdOn, Date editedOn, Thread thread,
+				Profile author, Profile editor, Post newVersion, Post oldVersion) {
 			final Post entity = new Post();
 			entity.setTitle(title);
-			entity.setMessage(message);
+			entity.setContent(content);
 			entity.setCreatedOn(createdOn);
 			entity.setEditedOn(editedOn);
 			entity.setThread(thread);

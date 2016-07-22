@@ -1,26 +1,40 @@
 package eu.arcangelovicedomini.javaforum.core.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * 
  */
+@Table(name = "THREAD")
 public class Thread implements Serializable {
 	/**
 	 * The serial version UID of this class. Needed for serialization.
 	 */
 	private static final long serialVersionUID = -5014929886250293423L;
 
-	private java.lang.Long threadId;
+	private Long threadId;
 
 	/**
 	 * 
 	 */
-	public java.lang.Long getThreadId() {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
+	public Long getThreadId() {
 		return this.threadId;
 	}
 
-	public void setThreadId(java.lang.Long threadId) {
+	public void setThreadId(Long threadId) {
 		this.threadId = threadId;
 	}
 
@@ -29,6 +43,7 @@ public class Thread implements Serializable {
 	/**
 	 * 
 	 */
+	@Column(name = "STATUS")
 	public EnumThreadStatus getStatus() {
 		return this.status;
 	}
@@ -37,43 +52,47 @@ public class Thread implements Serializable {
 		this.status = status;
 	}
 
-	private java.lang.String title;
+	private String title;
 
 	/**
 	 * 
 	 */
-	public java.lang.String getTitle() {
+	@Column(name = "TITLE")
+	public String getTitle() {
 		return this.title;
 	}
 
-	public void setTitle(java.lang.String title) {
+	public void setTitle(String title) {
 		this.title = title;
 	}
 
-	private java.util.Set<Post> posts = new java.util.HashSet<Post>();
+	public Section section;
+	
+	/**
+	 * 
+	 */
+	@Column(name = "SECTION_ID")
+	@ManyToOne(optional = false, targetEntity = Section.class)
+	public Section getSection() {
+		return section;
+	}
+	
+	public void setSection(Section section) {
+		this.section = section;
+	}
+	
+	private Set<Post> posts = new HashSet<Post>();
 
 	/**
 	 * 
 	 */
-	public java.util.Set<Post> getPosts() {
+	@OneToMany(mappedBy = "thread")
+	public Set<Post> getPosts() {
 		return this.posts;
 	}
 
-	public void setPosts(java.util.Set<Post> posts) {
+	public void setPosts(Set<Post> posts) {
 		this.posts = posts;
-	}
-
-	private Section section;
-
-	/**
-	 * 
-	 */
-	public Section getSection() {
-		return this.section;
-	}
-
-	public void setSection(Section section) {
-		this.section = section;
 	}
 
 	/**
@@ -106,47 +125,36 @@ public class Thread implements Serializable {
 	}
 
 	/**
-	 * Constructs new instances of
-	 * {@link Thread}.
+	 * Constructs new instances of {@link Thread}.
 	 */
 	public static final class Factory {
 		/**
-		 * Constructs a new instance of
-		 * {@link Thread}.
+		 * Constructs a new instance of {@link Thread}.
 		 */
 		public static Thread newInstance() {
 			return new Thread();
 		}
 
 		/**
-		 * Constructs a new instance of
-		 * {@link Thread}, taking
-		 * all required and/or read-only properties as arguments.
+		 * Constructs a new instance of {@link Thread}, taking all required
+		 * and/or read-only properties as arguments.
 		 */
-		public static Thread newInstance(
-				EnumThreadStatus status, java.lang.String title,
-				Section section) {
+		public static Thread newInstance(EnumThreadStatus status, String title) {
 			final Thread entity = new Thread();
 			entity.setStatus(status);
 			entity.setTitle(title);
-			entity.setSection(section);
 			return entity;
 		}
 
 		/**
-		 * Constructs a new instance of
-		 * {@link Thread}, taking
-		 * all possible properties (except the identifier(s))as arguments.
+		 * Constructs a new instance of {@link Thread}, taking all possible
+		 * properties (except the identifier(s))as arguments.
 		 */
-		public static Thread newInstance(
-				EnumThreadStatus status, java.lang.String title,
-				java.util.Set<Post> posts,
-				Section section) {
+		public static Thread newInstance(EnumThreadStatus status, String title, Set<Post> posts) {
 			final Thread entity = new Thread();
 			entity.setStatus(status);
 			entity.setTitle(title);
 			entity.setPosts(posts);
-			entity.setSection(section);
 			return entity;
 		}
 	}

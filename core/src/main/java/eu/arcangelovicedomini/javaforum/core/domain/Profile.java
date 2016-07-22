@@ -1,118 +1,142 @@
 package eu.arcangelovicedomini.javaforum.core.domain;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * 
  */
+@Table(name = "PROFILE")
 public class Profile implements Serializable {
 	/**
 	 * The serial version UID of this class. Needed for serialization.
 	 */
 	private static final long serialVersionUID = -3599278869713075896L;
 
-	private java.lang.Long profileId;
+	private Long profileId;
 
 	/**
 	 * 
 	 */
-	public java.lang.Long getProfileId() {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
+	public Long getProfileId() {
 		return this.profileId;
 	}
 
-	public void setProfileId(java.lang.Long profileId) {
+	public void setProfileId(Long profileId) {
 		this.profileId = profileId;
 	}
 
-	private java.lang.String name;
+	private String name;
 
 	/**
 	 * 
 	 */
-	public java.lang.String getName() {
+	@Column(name = "NAME")
+	public String getName() {
 		return this.name;
 	}
 
-	public void setName(java.lang.String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	private java.lang.String surname;
+	private String surname;
 
 	/**
 	 * 
 	 */
-	public java.lang.String getSurname() {
+	@Column(name = "SURNAME")
+	public String getSurname() {
 		return this.surname;
 	}
 
-	public void setSurname(java.lang.String surname) {
+	public void setSurname(String surname) {
 		this.surname = surname;
 	}
 
-	private java.lang.String prefix;
+	private EnumNamePrefix prefix;
 
 	/**
 	 * 
 	 */
-	public java.lang.String getPrefix() {
+	@Column(name = "PREFIX")
+	public EnumNamePrefix getPrefix() {
 		return this.prefix;
 	}
 
-	public void setPrefix(java.lang.String prefix) {
+	public void setPrefix(EnumNamePrefix prefix) {
 		this.prefix = prefix;
 	}
 
-	private java.lang.String suffix;
+	private String suffix;
 
 	/**
 	 * 
 	 */
-	public java.lang.String getSuffix() {
+	@Column(name = "SUFFIX")
+	public String getSuffix() {
 		return this.suffix;
 	}
 
-	public void setSuffix(java.lang.String suffix) {
+	public void setSuffix(String suffix) {
 		this.suffix = suffix;
 	}
 
-	private java.util.Date birthDate;
+	private Date birthDate;
 
 	/**
 	 * 
 	 */
-	public java.util.Date getBirthDate() {
+	@Temporal(TemporalType.DATE)
+	@Column(name = "BIRTH_DATE")
+	public Date getBirthDate() {
 		return this.birthDate;
 	}
 
-	public void setBirthDate(java.util.Date birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 
-	private java.util.Set<Post> posts = new java.util.HashSet<Post>();
+	@OneToMany(mappedBy = "author", targetEntity = Post.class)
+	private Set<Post> posts = new HashSet<Post>();
 
 	/**
 	 * 
 	 */
-	public java.util.Set<Post> getPosts() {
+	public Set<Post> getPosts() {
 		return this.posts;
 	}
 
-	public void setPosts(java.util.Set<Post> posts) {
+	public void setPosts(Set<Post> posts) {
 		this.posts = posts;
 	}
 
-	private java.util.Set<Post> postVersionsCommitted = new java.util.HashSet<Post>();
+	private Set<Post> postVersionsCommitted = new HashSet<Post>();
 
 	/**
 	 * 
 	 */
-	public java.util.Set<Post> getPostVersionsCommitted() {
+	@OneToMany(mappedBy = "editor", targetEntity = Post.class)
+	public Set<Post> getPostVersionsCommitted() {
 		return this.postVersionsCommitted;
 	}
 
-	public void setPostVersionsCommitted(
-			java.util.Set<Post> postVersionsCommitted) {
+	public void setPostVersionsCommitted(Set<Post> postVersionsCommitted) {
 		this.postVersionsCommitted = postVersionsCommitted;
 	}
 
@@ -121,6 +145,8 @@ public class Profile implements Serializable {
 	/**
 	 * 
 	 */
+	@Column (name = "USER_ID", nullable = false)
+	@OneToOne(mappedBy = "profile", targetEntity = User.class)
 	public User getUser() {
 		return this.user;
 	}
@@ -159,25 +185,21 @@ public class Profile implements Serializable {
 	}
 
 	/**
-	 * Constructs new instances of
-	 * {@link Profile}.
+	 * Constructs new instances of {@link Profile}.
 	 */
 	public static final class Factory {
 		/**
-		 * Constructs a new instance of
-		 * {@link Profile}.
+		 * Constructs a new instance of {@link Profile}.
 		 */
 		public static Profile newInstance() {
 			return new Profile();
 		}
 
 		/**
-		 * Constructs a new instance of
-		 * {@link Profile}, taking
-		 * all required and/or read-only properties as arguments.
+		 * Constructs a new instance of {@link Profile}, taking all required
+		 * and/or read-only properties as arguments.
 		 */
-		public static Profile newInstance(java.lang.String name,
-				java.lang.String surname, java.lang.String prefix, java.lang.String suffix, java.util.Date birthDate,
+		public static Profile newInstance(String name, String surname, EnumNamePrefix prefix, String suffix, Date birthDate,
 				User user) {
 			final Profile entity = new Profile();
 			entity.setName(name);
@@ -190,15 +212,11 @@ public class Profile implements Serializable {
 		}
 
 		/**
-		 * Constructs a new instance of
-		 * {@link Profile}, taking
-		 * all possible properties (except the identifier(s))as arguments.
+		 * Constructs a new instance of {@link Profile}, taking all possible
+		 * properties (except the identifier(s))as arguments.
 		 */
-		public static Profile newInstance(java.lang.String name,
-				java.lang.String surname, java.lang.String prefix, java.lang.String suffix, java.util.Date birthDate,
-				java.util.Set<Post> posts,
-				java.util.Set<Post> postVersionsCommitted,
-				User user) {
+		public static Profile newInstance(String name, String surname, EnumNamePrefix prefix, String suffix, Date birthDate,
+				Set<Post> posts, Set<Post> postVersionsCommitted, User user) {
 			final Profile entity = new Profile();
 			entity.setName(name);
 			entity.setSurname(surname);

@@ -57,6 +57,7 @@ public class Area implements Serializable {
 	/**
 	 * 
 	 */
+	@Column(name = "FORUM_ID")
 	@ManyToOne(optional = false, targetEntity = Forum.class)
 	public Forum getForum() {
 		return this.forum;
