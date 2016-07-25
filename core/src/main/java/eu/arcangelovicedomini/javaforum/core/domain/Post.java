@@ -149,7 +149,7 @@ public class Post implements Serializable {
 	 * 
 	 */
 	@Column(name = "NEW_VERSION_ID")
-	@OneToOne(mappedBy = "oldVersion", targetEntity = Post.class)
+	@OneToOne(mappedBy = "postId", targetEntity = Post.class)
 	public Post getNewVersion() {
 		return this.newVersion;
 	}
@@ -164,7 +164,7 @@ public class Post implements Serializable {
 	 * 
 	 */
 	@Column(name = "OLD_VERSION_ID")
-	@OneToOne(mappedBy = "newVersion", targetEntity = Post.class)
+	@OneToOne(mappedBy = "postId", targetEntity = Post.class)
 	public Post getOldVersion() {
 		return this.oldVersion;
 	}
