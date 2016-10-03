@@ -4,6 +4,8 @@ import java.util.List;
 
 public class ForumDao implements Dao<Forum, Long> {
 
+	
+	
 	@Override
 	public void create(Forum entity) {
 		// TODO Auto-generated method stub
