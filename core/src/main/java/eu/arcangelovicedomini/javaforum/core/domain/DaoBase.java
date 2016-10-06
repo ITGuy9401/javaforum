@@ -47,4 +47,20 @@ public abstract class DaoBase<En, Vo, Id extends Serializable> implements Dao<En
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public En get(Id id) {
+		return null;
+	}
+	
+	public Vo toVo(En entity) {
+		return null;
+	}
+	
+	public List<Vo> toVoCollection(List<En> entities) {
+		return null;
+	}
+	
+	public List<Vo> toVoCollection(En... entities) {
+		return null;
+	}
 }

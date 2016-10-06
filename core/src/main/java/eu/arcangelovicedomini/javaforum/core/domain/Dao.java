@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface Dao<En, Vo, Id extends Serializable> {
+	
+	public En get(Id id);
 
 	public void create(En entity);
 
@@ -14,4 +16,10 @@ public interface Dao<En, Vo, Id extends Serializable> {
 	public List<En> findAll();
 
 	public void deleteAll();
+	
+	public Vo toVo(En entity);
+	
+	public List<Vo> toVoCollection(List<En> entities);
+	
+	public List<Vo> toVoCollection(En... entities);
 }
