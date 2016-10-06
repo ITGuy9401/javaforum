@@ -1,39 +1,9 @@
 package eu.arcangelovicedomini.javaforum.core.domain;
 
-import java.util.List;
+import eu.arcangelovicedomini.javaforum.core.vo.ForumVO;
 
-public class ForumDao implements Dao<Forum, Long> {
+public class ForumDao implements Dao<Forum, ForumVO, Long> {
 
 	
-	
-	@Override
-	public void create(Forum entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(Forum entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete(Forum entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<Forum> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteAll() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

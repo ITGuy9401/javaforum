@@ -3,15 +3,15 @@ package eu.arcangelovicedomini.javaforum.core.domain;
 import java.io.Serializable;
 import java.util.List;
 
-public interface Dao<T, Id extends Serializable> {
+public interface Dao<En, Vo, Id extends Serializable> {
 
-	public void create(T entity);
+	public void create(En entity);
 
-	public void update(T entity);
+	public void update(En entity);
 
-	public void delete(T entity);
+	public void delete(En entity);
 
-	public List<T> findAll();
+	public List<En> findAll();
 
 	public void deleteAll();
 }
