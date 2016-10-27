@@ -3,53 +3,42 @@ package eu.arcangelovicedomini.javaforum.core.domain;
 import java.io.Serializable;
 import java.util.List;
 
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
-public abstract class DaoBase<En, Vo, Id extends Serializable> implements Dao<En, Vo, Id> {
-	private SessionFactory sessionFactory;
-
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+public abstract class DaoBase<En, Vo, Id extends Serializable> extends HibernateDaoSupport implements Dao<En, Vo, Id> {
+	
 	
 	@Override
-	public void create(En entity) {
+	public En create(En entity) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
 	public void update(En entity) {
 		// TODO Auto-generated method stub
-		
+		getHibernateTemplate().update(entity);
 	}
 
 	@Override
 	public void delete(En entity) {
 		// TODO Auto-generated method stub
-		
+		getHibernateTemplate().delete(entity);
 	}
 
 	@Override
 	public List<En> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		getHibernateTemplate().loadAll(En); //FIXME
 	}
 
 	@Override
 	public void deleteAll() {
 		// TODO Auto-generated method stub
-		
+		getHibernateTemplate().deleteAll(findAll());
 	}
 	
 	public En get(Id id) {
-		return null;
+		getHibernateTemplate().load(En, id); // FIXME
 	}
 	
 	public Vo toVo(En entity) {

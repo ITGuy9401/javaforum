@@ -25,6 +25,19 @@ public class ForumService {
 			// FIXME log and handle this
 			throw ex;
 		}
-		
+	}
+	
+	public ForumVO createForum(String title, String description, String url) throws Exception {
+		try {
+			Forum forum = new Forum();
+			forum.setTitle(title);
+			forum.setDescription(description);
+			forum.setUrl(url);
+			forum = forumDao.create(forum);
+			return forumDao.toVo(forum);
+		} catch (Throwable ex) {
+			// FIXME log and handle this
+			throw ex;
+		}
 	}
 }

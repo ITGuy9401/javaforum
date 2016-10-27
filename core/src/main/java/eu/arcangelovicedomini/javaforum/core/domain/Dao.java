@@ -7,7 +7,7 @@ public interface Dao<En, Vo, Id extends Serializable> {
 	
 	public En get(Id id);
 
-	public void create(En entity);
+	public En create(En entity);
 
 	public void update(En entity);
 

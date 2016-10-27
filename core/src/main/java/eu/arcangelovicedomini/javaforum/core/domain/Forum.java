@@ -1,6 +1,8 @@
 package eu.arcangelovicedomini.javaforum.core.domain;
 
 import java.io.Serializable;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -68,6 +70,21 @@ public class Forum implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	private String url;
+	
+	/**
+	 * <p>
+	 * Relative or Absolute URL of the forum.
+	 * </p>
+	 */
+	public String getUrl() {
+		return url;
+	}
+	
+	public void setUrl(String url) throws MalformedURLException {
+		this.url = new URL(url).toString(); // Needed for validation of the URI
 	}
 
 	private Set<Area> areas = new HashSet<Area>();
