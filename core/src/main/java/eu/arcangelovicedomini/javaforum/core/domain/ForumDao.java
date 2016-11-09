@@ -7,5 +7,10 @@ import eu.arcangelovicedomini.javaforum.core.vo.ForumVO;
 @Repository("forumDao")
 public class ForumDao extends DaoBase<Forum, ForumVO, Long> {
 
+	@Override
+	protected void toVo(Forum entity, ForumVO vo) {
+		// FIXME implementare
+	}
+
 
 }
