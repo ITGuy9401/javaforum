@@ -21,21 +21,20 @@ public abstract class DaoBase<En, Vo, Id extends Serializable> extends Hibernate
                 .getGenericSuperclass()).getActualTypeArguments()[1];
 	 }
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public En create(En entity) {
-		// TODO Auto-generated method stub
-		return null;
+		entity = (En) getHibernateTemplate().save(entity);
+		return entity;
 	}
 
 	@Override
 	public void update(En entity) {
-		// TODO Auto-generated method stub
 		getHibernateTemplate().update(entity);
 	}
 
 	@Override
 	public void delete(En entity) {
-		// TODO Auto-generated method stub
 		getHibernateTemplate().delete(entity);
 	}
 
@@ -48,7 +47,6 @@ public abstract class DaoBase<En, Vo, Id extends Serializable> extends Hibernate
 
 	@Override
 	public void deleteAll() {
-		// TODO Auto-generated method stub
 		getHibernateTemplate().deleteAll(findAll());
 	}
 	
