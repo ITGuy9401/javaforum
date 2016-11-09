@@ -6,3 +6,4 @@ m2eclipse.bat
 core/.classpath
 *.project
 *.settings
+*.classpath
