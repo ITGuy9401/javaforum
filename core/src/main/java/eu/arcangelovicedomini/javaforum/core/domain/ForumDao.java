@@ -9,7 +9,10 @@ public class ForumDao extends DaoBase<Forum, ForumVO, Long> {
 
 	@Override
 	protected void toVo(Forum entity, ForumVO vo) {
-		// FIXME implementare
+		vo.setForumId(entity.getForumId());
+		vo.setDescription(entity.getDescription());
+		vo.setTitle(entity.getTitle());
+		vo.setUrl(entity.getUrl());
 	}
 
 
