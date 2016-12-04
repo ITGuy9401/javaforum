@@ -43,13 +43,24 @@ public class Area implements Serializable {
 	/**
 	 * 
 	 */
-	@Column(name = "ID")
+	@Column(name = "TITLE")
 	public String getTitle() {
 		return this.title;
 	}
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	private String description;
+	
+	@Column(name = "DESCRIPTION")
+	public String getDescription() {
+		return this.description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	private Forum forum;

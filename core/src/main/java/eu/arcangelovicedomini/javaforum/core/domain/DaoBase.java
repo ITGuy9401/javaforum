@@ -57,7 +57,7 @@ public abstract class DaoBase<En, Vo, Id extends Serializable> extends Hibernate
 		return entity;
 	}
 	
-	protected abstract void toVo(En entity, Vo vo);
+	protected abstract void toVo(En entity, Vo vo) throws Exception;
 	
 	@Override
 	public Vo toVo(En entity) {

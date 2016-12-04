@@ -8,7 +8,7 @@ import eu.arcangelovicedomini.javaforum.core.vo.ForumVO;
 public class ForumDao extends DaoBase<Forum, ForumVO, Long> {
 
 	@Override
-	protected void toVo(Forum entity, ForumVO vo) {
+	protected void toVo(Forum entity, ForumVO vo) throws Exception {
 		vo.setForumId(entity.getForumId());
 		vo.setDescription(entity.getDescription());
 		vo.setTitle(entity.getTitle());
