@@ -11,7 +11,7 @@ public class ForumVO implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1;
 	private Long forumId;
 
 	/**

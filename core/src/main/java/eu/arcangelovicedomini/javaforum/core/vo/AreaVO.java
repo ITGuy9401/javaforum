@@ -4,22 +4,13 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
 import eu.arcangelovicedomini.javaforum.core.domain.Area;
-import eu.arcangelovicedomini.javaforum.core.domain.Forum;
-import eu.arcangelovicedomini.javaforum.core.domain.Section;
 
 public class AreaVO implements Serializable {
 	/**
 	 * The serial version UID of this class. Needed for serialization.
 	 */
-	private static final long serialVersionUID = -8058752111642518049L;
+	private static final long serialVersionUID = 1;
 
 	private Long areaId;
 
@@ -51,7 +42,7 @@ public class AreaVO implements Serializable {
 		this.description = description;
 	}
 	
-	private Set<SectionVO> sections = new HashSet<Section>();
+	private Set<SectionVO> sections = new HashSet<SectionVO>();
 
 	public Set<SectionVO> getSections() {
 		return this.sections;
