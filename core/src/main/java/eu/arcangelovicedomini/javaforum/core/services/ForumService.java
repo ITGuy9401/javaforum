@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import eu.arcangelovicedomini.javaforum.core.domain.Forum;
 import eu.arcangelovicedomini.javaforum.core.domain.ForumDao;
+import eu.arcangelovicedomini.javaforum.core.exception.JFException;
+import eu.arcangelovicedomini.javaforum.core.exception.JFException.ExceptionType;
 import eu.arcangelovicedomini.javaforum.core.vo.ForumVO;
 
 @Service("forumService")
@@ -27,7 +29,7 @@ public class ForumService {
 		}
 	}
 	
-	public ForumVO createForum(String title, String description, String url) throws Exception {
+	public ForumVO createForum(String title, String description, String url) throws JFException {
 		try {
 			Forum forum = new Forum();
 			forum.setTitle(title);
@@ -37,7 +39,7 @@ public class ForumService {
 			return forumDao.toVo(forum);
 		} catch (Throwable ex) {
 			// FIXME log and handle this
-			throw ex;
+			throw new JFException(ex, ExceptionType.TECHNICAL, "ERROR IN SERVICE LAYER: " + ex.getMessage(), "error.Application.serviceLayerTechnicalError", ex.getMessage());
 		}
 	}
 }

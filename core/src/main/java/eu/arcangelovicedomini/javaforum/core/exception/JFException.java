@@ -14,6 +14,14 @@ public class JFException extends Exception {
 	private Object[] messageArgs;
 	private ExceptionType exceptionType;
 	
+	public JFException(Throwable cause, ExceptionType exceptionType, String message, String messageKey, Object... messageArgs) {
+		this.message = message;
+		this.messageKey = messageKey;
+		this.messageArgs = messageArgs;
+		this.exceptionType = exceptionType;
+		this.initCause(cause);
+	}
+	
 	public JFException(ExceptionType exceptionType, String message, String messageKey, Object... messageArgs) {
 		this.message = message;
 		this.messageKey = messageKey;
