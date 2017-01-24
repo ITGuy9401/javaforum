@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -15,7 +14,7 @@ public class I18NResource implements Serializable {
 	/**
 	 * The serial version UID of this class. Needed for serialization.
 	 */
-	private static final long serialVersionUID = -1L;
+	private static final long serialVersionUID = 1L;
 	
 	private I18NResourcePK primaryKey;
 	
