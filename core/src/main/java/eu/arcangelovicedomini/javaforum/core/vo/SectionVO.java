@@ -1,8 +1,6 @@
 package eu.arcangelovicedomini.javaforum.core.vo;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * 
@@ -54,58 +52,6 @@ public class SectionVO implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	private AreaVO area;
-
-	/**
-	 * 
-	 */
-	public AreaVO getArea() {
-		return this.area;
-	}
-
-	public void setArea(AreaVO area) {
-		this.area = area;
-	}
-
-	private Set<ThreadVO> threads = new HashSet<ThreadVO>();
-
-	/**
-	 * 
-	 */
-	public Set<ThreadVO> getThreads() {
-		return this.threads;
-	}
-
-	public void setThreads(Set<ThreadVO> threads) {
-		this.threads = threads;
-	}
-
-	private Set<SectionVO> childSections = new HashSet<SectionVO>();
-
-	/**
-	 * 
-	 */
-	public Set<SectionVO> getChildSections() {
-		return this.childSections;
-	}
-
-	public void setChildSections(Set<SectionVO> childSections) {
-		this.childSections = childSections;
-	}
-
-	private SectionVO fatherSection;
-
-	/**
-	 * 
-	 */
-	public SectionVO getFatherSection() {
-		return this.fatherSection;
-	}
-
-	public void setFatherSection(SectionVO fatherSection) {
-		this.fatherSection = fatherSection;
 	}
 
 	/**

@@ -1,6 +1,8 @@
 package eu.arcangelovicedomini.javaforum.core.vo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,16 +44,6 @@ public class AreaVO implements Serializable {
 		this.description = description;
 	}
 	
-	private Set<SectionVO> sections = new HashSet<SectionVO>();
-
-	public Set<SectionVO> getSections() {
-		return this.sections;
-	}
-
-	public void setSections(Set<SectionVO> sections) {
-		this.sections = sections;
-	}
-
 	/**
 	 * Returns <code>true</code> if the argument is an Area instance and all
 	 * identifiers for this entity equal the identifiers of the argument entity.

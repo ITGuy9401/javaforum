@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
@@ -71,16 +72,17 @@ public abstract class DaoBase<En, Vo, Id extends Serializable> extends Hibernate
 	}
 	
 	@Override
-	public List<Vo> toVoCollection(List<En> entities) {
+	public Collection<Vo> toVoCollection(Collection<En> entities) {
 		List<Vo> vos = new ArrayList<>();
 		for (En en : entities) {
 			vos.add(toVo(en));
 		}
 		return vos;
 	}
-	
+
 	@Override
-	public List<Vo> toVoCollection(En... entities) {
+	@SuppressWarnings("unchecked")
+	public Collection<Vo> toVoCollection(En... entities) {
 		return toVoCollection(Arrays.asList(entities));
 	}
 }

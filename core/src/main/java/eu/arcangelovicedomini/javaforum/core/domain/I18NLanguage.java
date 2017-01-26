@@ -1,15 +1,11 @@
 package eu.arcangelovicedomini.javaforum.core.domain;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -97,16 +93,6 @@ public class I18NLanguage implements Serializable {
 			return entity;
 		}
 
-		/**
-		 * Constructs a new instance of {@link I18NLanguage}, taking all possible
-		 * properties (except the identifier(s))as arguments.
-		 */
-//		public static I18NLanguage newInstance(String LanguageCode, Forum forum, Set<Section> sections) {
-//			final I18NLanguage entity = new I18NLanguage();
-//			entity.setLanguageCode(languageCode);
-//			return entity;
-//		}
 	}
 
-	// HibernateEntity.vsl merge-point
 }

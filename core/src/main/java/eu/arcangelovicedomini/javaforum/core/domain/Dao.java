@@ -1,6 +1,7 @@
 package eu.arcangelovicedomini.javaforum.core.domain;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ public interface Dao<En, Vo, Id extends Serializable> {
 	
 	public Vo toVo(En entity);
 	
-	public List<Vo> toVoCollection(List<En> entities);
+	public Collection<Vo> toVoCollection(Collection<En> entities);
 	
-	public List<Vo> toVoCollection(En... entities);
+	public Collection<Vo> toVoCollection(En... entities);
 }
