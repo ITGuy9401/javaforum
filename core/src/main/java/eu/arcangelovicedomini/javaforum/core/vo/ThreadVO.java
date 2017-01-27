@@ -80,32 +80,4 @@ public class ThreadVO implements Serializable {
 		this.posts = posts;
 	}
 
-	/**
-	 * Returns <code>true</code> if the argument is an Thread instance and all
-	 * identifiers for this entity equal the identifiers of the argument entity.
-	 * Returns <code>false</code> otherwise.
-	 */
-	public boolean equals(Object object) {
-		if (this == object) {
-			return true;
-		}
-		if (!(object instanceof ThreadVO)) {
-			return false;
-		}
-		final ThreadVO that = (ThreadVO) object;
-		if (this.threadId == null || that.getThreadId() == null || !this.threadId.equals(that.getThreadId())) {
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * Returns a hash code based on this entity's identifiers.
-	 */
-	public int hashCode() {
-		int hashCode = 0;
-		hashCode = 29 * hashCode + (threadId == null ? 0 : threadId.hashCode());
-
-		return hashCode;
-	}
 }

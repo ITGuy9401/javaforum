@@ -133,32 +133,4 @@ public class ProfileVO implements Serializable {
 		this.user = user;
 	}
 
-	/**
-	 * Returns <code>true</code> if the argument is an Profile instance and all
-	 * identifiers for this entity equal the identifiers of the argument entity.
-	 * Returns <code>false</code> otherwise.
-	 */
-	public boolean equals(Object object) {
-		if (this == object) {
-			return true;
-		}
-		if (!(object instanceof ProfileVO)) {
-			return false;
-		}
-		final ProfileVO that = (ProfileVO) object;
-		if (this.profileId == null || that.getProfileId() == null || !this.profileId.equals(that.getProfileId())) {
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * Returns a hash code based on this entity's identifiers.
-	 */
-	public int hashCode() {
-		int hashCode = 0;
-		hashCode = 29 * hashCode + (profileId == null ? 0 : profileId.hashCode());
-
-		return hashCode;
-	}
 }

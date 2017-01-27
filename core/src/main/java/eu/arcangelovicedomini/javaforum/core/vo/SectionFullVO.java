@@ -26,29 +26,29 @@ public class SectionFullVO extends SectionAreaVO implements Serializable {
 		this.threads = threads;
 	}
 
-	private Collection<SectionFullVO> childSections = new ArrayList<SectionFullVO>();
+	private Collection<SectionVO> childSections = new ArrayList<SectionVO>();
 
 	/**
 	 * 
 	 */
-	public Collection<SectionFullVO> getChildSections() {
+	public Collection<SectionVO> getChildSections() {
 		return this.childSections;
 	}
 
-	public void setChildSections(Collection<SectionFullVO> childSections) {
+	public void setChildSections(Collection<SectionVO> childSections) {
 		this.childSections = childSections;
 	}
 
-	private SectionFullVO fatherSection;
+	private SectionVO fatherSection;
 
 	/**
 	 * 
 	 */
-	public SectionFullVO getFatherSection() {
+	public SectionVO getFatherSection() {
 		return this.fatherSection;
 	}
 
-	public void setFatherSection(SectionFullVO fatherSection) {
+	public void setFatherSection(SectionVO fatherSection) {
 		this.fatherSection = fatherSection;
 	}
 }

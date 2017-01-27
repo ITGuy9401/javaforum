@@ -78,34 +78,4 @@ public class UserConfigurationVO implements Serializable {
 	public void setUser(UserVO user) {
 		this.user = user;
 	}
-
-	/**
-	 * Returns <code>true</code> if the argument is an UserConfiguration
-	 * instance and all identifiers for this entity equal the identifiers of the
-	 * argument entity. Returns <code>false</code> otherwise.
-	 */
-	public boolean equals(Object object) {
-		if (this == object) {
-			return true;
-		}
-		if (!(object instanceof UserConfigurationVO)) {
-			return false;
-		}
-		final UserConfigurationVO that = (UserConfigurationVO) object;
-		if (this.userConfigurationId == null || that.getUserConfigurationId() == null
-				|| !this.userConfigurationId.equals(that.getUserConfigurationId())) {
-			return false;
-		}
-		return true;
-	}
-
-	/**
-	 * Returns a hash code based on this entity's identifiers.
-	 */
-	public int hashCode() {
-		int hashCode = 0;
-		hashCode = 29 * hashCode + (userConfigurationId == null ? 0 : userConfigurationId.hashCode());
-
-		return hashCode;
-	}
 }

@@ -36,5 +36,6 @@ public interface Dao<En, Vo, Id extends Serializable> {
 	
 	public Collection<Vo> toVoCollection(Collection<En> entities);
 	
+	@SuppressWarnings("unchecked")
 	public Collection<Vo> toVoCollection(En... entities);
 }
