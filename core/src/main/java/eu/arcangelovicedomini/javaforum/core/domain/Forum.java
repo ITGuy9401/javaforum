@@ -75,17 +75,48 @@ public class Forum implements Serializable {
 	
 	/**
 	 * <p>
-	 * Relative or Absolute URL of the forum.
+	 * Absolute URL of the forum.
 	 * </p>
 	 */
+	@Column(name = "URL")
 	public String getUrl() {
 		return url;
 	}
 	
 	public void setUrl(String url) throws MalformedURLException {
-		this.url = new URL(url).toString(); // Needed for validation of the URI
+		this.url = url;
 	}
 
+	
+	private Boolean requireLogin;
+	
+	/**
+	 * If true, login or registration is needed to access this forum.
+	 */
+	@Column(name = "REQUIRE_LOGIN")
+	public Boolean getRequireLogin() {
+		return requireLogin;
+	}
+	
+	public void setRequireLogin(Boolean requireLogin) {
+		this.requireLogin = requireLogin;
+	}
+
+	
+	private Boolean maintenanceMode;
+	
+	/**
+	 * If true, only administrators or moderators can access this forum.
+	 */
+	@Column(name = "MAINTENANCE_MODE")
+	public Boolean getMaintenanceMode() {
+		return maintenanceMode;
+	}
+	
+	public void setMaintenanceMode(Boolean maintenanceMode) {
+		this.maintenanceMode = maintenanceMode;
+	}
+	
 	private Set<Area> areas = new HashSet<Area>();
 
 	/**
