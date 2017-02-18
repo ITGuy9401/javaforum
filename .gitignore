@@ -7,3 +7,7 @@ core/.classpath
 *.project
 *.settings
 *.classpath
+.idea
+*.idea
+*/.idea
+*/**/.idea
