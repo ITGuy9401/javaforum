@@ -9,5 +9,6 @@ import java.util.Map;
 public class HomeController {
     public Map<String, Object> getForumData(){
         Map<String, Object> result = new HashMap<>();
+        return result;
     }
 }
