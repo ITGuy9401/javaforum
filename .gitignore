@@ -12,3 +12,9 @@ core/.classpath
 */.idea
 */**/.idea
 \.~vaforum Specification\.docx
+
+*.lck
+
+*.bak_000f
+
+*.bak_001d
