@@ -14,6 +14,7 @@ public class User extends BaseEntity {
     private String email;
     private String password;
     private Blob profilePic;
+    private Boolean isMasterAdmin;
     private ZonedDateTime birthDate;
     private ZonedDateTime registrationDate;
 
@@ -82,5 +83,14 @@ public class User extends BaseEntity {
 
     public void setRegistrationDate(ZonedDateTime registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    @Column(name = "IS_MASTER_ADMIN", nullable = false)
+    public Boolean getMasterAdmin() {
+        return isMasterAdmin;
+    }
+
+    public void setMasterAdmin(Boolean masterAdmin) {
+        isMasterAdmin = masterAdmin;
     }
 }
