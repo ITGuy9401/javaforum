@@ -84,6 +84,7 @@ public class Forum extends BaseEntity {
     }
 
     @OneToMany(mappedBy = "FORUM_ID", fetch = FetchType.EAGER)
+    @OrderBy("order ASC")
     public List<Area> getAreas() {
         return areas;
     }

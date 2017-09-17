@@ -1,6 +1,7 @@
 package eu.arcangelovicedomini.javaforum.api.domain;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.domain.Page;
 
 import javax.persistence.*;
 import java.sql.Blob;
@@ -18,6 +19,7 @@ public class Section extends BaseEntity {
     private Area area;
     private List<Group> relatedGroups;
     private List<Section> childSections;
+    private Page<Thread> threads;
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -98,11 +100,22 @@ public class Section extends BaseEntity {
     }
 
     @OneToMany(mappedBy = "PARENT_SECTION_UUID")
+    @OrderBy("order ASC")
     public List<Section> getChildSections() {
         return childSections;
     }
 
     public void setChildSections(List<Section> childSections) {
         this.childSections = childSections;
+    }
+
+    @OneToMany(mappedBy = "SECTION_UUID")
+    @OrderBy("lastUpdateDate ASC")
+    public Page<Thread> getThreads() {
+        return threads;
+    }
+
+    public void setThreads(Page<Thread> threads) {
+        this.threads = threads;
     }
 }
