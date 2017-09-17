@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "SECTION")
-public class Section {
+public class Section extends BaseEntity {
     private String uuid;
     private Long order;
     private String name;

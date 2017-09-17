@@ -1,4 +1,4 @@
 package eu.arcangelovicedomini.javaforum.api.domain;
 
-public class Profile {
+public class Profile extends BaseEntity {
 }

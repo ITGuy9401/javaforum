@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "FORUM")
-public class Forum {
+public class Forum extends BaseEntity {
     private Long forumId;
     private String name;
     private String description;

@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "GROUP")
-public class Group {
+public class Group extends BaseEntity {
     private Long groupId;
     private String groupName;
     private String groupDescription;

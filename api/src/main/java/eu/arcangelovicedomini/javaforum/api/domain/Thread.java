@@ -1,4 +1,4 @@
 package eu.arcangelovicedomini.javaforum.api.domain;
 
-public class Thread {
+public class Thread extends BaseEntity {
 }

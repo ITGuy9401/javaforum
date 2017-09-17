@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "USER_GROUP")
-public class UserGroups {
+public class UserGroups extends BaseEntity {
     private String uuid;
     private Group group;
     private User user;

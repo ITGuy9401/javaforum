@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "AREA")
-public class Area {
+public class Area extends BaseEntity {
     private String uuid;
     private Long order;
     private Forum forum;
