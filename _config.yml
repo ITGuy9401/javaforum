@@ -1,7 +1,7 @@
 title: JavaForum
 description: Open Source Forum CMS written in Java+SpringBoot & HTML5
 google_analytics: 
-show_downloads: true
+show_downloads: false
 theme: jekyll-theme-cayman
 
 gems:
