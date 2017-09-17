@@ -13,6 +13,7 @@ public class Group {
     private Boolean globalPrivileges;
     private Boolean isAdmin;
     private Boolean isModerator;
+    private Section ownerSection;
     private List<UserGroups> users;
 
     @Id
@@ -79,6 +80,16 @@ public class Group {
 
     public void setModerator(Boolean moderator) {
         isModerator = moderator;
+    }
+
+    @ManyToOne
+    @Column(name = "SECTION_UUID")
+    public Section getOwnerSection() {
+        return ownerSection;
+    }
+
+    public void setOwnerSection(Section ownerSection) {
+        this.ownerSection = ownerSection;
     }
 
     @OneToMany(mappedBy = "GROUP_ID")

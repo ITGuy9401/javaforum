@@ -64,7 +64,7 @@ public class Area {
         this.description = description;
     }
 
-    @OneToMany(mappedBy = "AREA_ID")
+    @OneToMany(mappedBy = "AREA_UUID")
     public List<Section> getSections() {
         return sections;
     }
