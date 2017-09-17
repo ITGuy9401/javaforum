@@ -93,6 +93,7 @@ public class Group extends BaseEntity {
     }
 
     @OneToMany(mappedBy = "GROUP_ID")
+    @OrderBy("username ASC")
     public List<UserGroups> getUsers() {
         return users;
     }

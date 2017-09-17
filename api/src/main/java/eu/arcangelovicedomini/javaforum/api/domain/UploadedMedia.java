@@ -16,6 +16,7 @@ public class UploadedMedia extends BaseEntity {
     private MediaType mediaType;
     private User author;
     private Blob data;
+    private Post post;
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -83,5 +84,15 @@ public class UploadedMedia extends BaseEntity {
 
     public void setData(Blob data) {
         this.data = data;
+    }
+
+    @ManyToOne
+    @Column(name = "POST_UUID")
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 }
