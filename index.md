@@ -1,5 +1,7 @@
 ### JavaForum
 
+[![Build Status](https://travis-ci.org/javaforum-cms/javaforum-core.svg?branch=dev1.0.0)](https://travis-ci.org/javaforum-cms/javaforum-core)
+
 JavaForum is a Forum CMS made in Java+SpringBoot and HTML5.
 The purpuose if this project is to get the Forum experience to a total new layer, since everything is still stuck to PHPbb and vBullettin.
 
