@@ -67,7 +67,7 @@ public class Post extends BaseEntity {
         this.thread = thread;
     }
 
-    @OneToMany(mappedBy = "POST_UUID")
+    @OneToMany(mappedBy = "post")
     public List<UploadedMedia> getUploadedMedia() {
         return uploadedMedia;
     }

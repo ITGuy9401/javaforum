@@ -83,7 +83,7 @@ public class Forum extends BaseEntity {
         this.owner = owner;
     }
 
-    @OneToMany(mappedBy = "FORUM_ID", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "forum", fetch = FetchType.EAGER)
     @OrderBy("order ASC")
     public List<Area> getAreas() {
         return areas;
@@ -93,7 +93,7 @@ public class Forum extends BaseEntity {
         this.areas = areas;
     }
 
-    @OneToMany(mappedBy = "FORUM_ID", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "forum", fetch = FetchType.LAZY)
     public List<Group> getGroups() {
         return groups;
     }

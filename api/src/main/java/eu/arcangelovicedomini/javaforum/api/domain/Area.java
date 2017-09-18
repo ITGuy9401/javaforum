@@ -64,7 +64,7 @@ public class Area extends BaseEntity {
         this.description = description;
     }
 
-    @OneToMany(mappedBy = "AREA_UUID")
+    @OneToMany(mappedBy = "area")
     @OrderBy("order ASC")
     public List<Section> getSections() {
         return sections;

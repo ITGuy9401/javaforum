@@ -89,7 +89,7 @@ public class Section extends BaseEntity {
         this.area = area;
     }
 
-    @OneToMany(mappedBy = "SECTION_UUID")
+    @OneToMany(mappedBy = "ownerSection")
     public List<Group> getRelatedGroups() {
         return relatedGroups;
     }
@@ -98,7 +98,7 @@ public class Section extends BaseEntity {
         this.relatedGroups = relatedGroups;
     }
 
-    @OneToMany(mappedBy = "PARENT_SECTION_UUID")
+    @OneToMany(mappedBy = "parentSection")
     @OrderBy("order ASC")
     public List<Section> getChildSections() {
         return childSections;
@@ -108,7 +108,7 @@ public class Section extends BaseEntity {
         this.childSections = childSections;
     }
 
-    @OneToMany(mappedBy = "SECTION_UUID")
+    @OneToMany(mappedBy = "section")
     @OrderBy("lastUpdateDate ASC")
     public List<Thread> getThreads() {
         return threads;
