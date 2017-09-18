@@ -1,9 +1,9 @@
 package eu.arcangelovicedomini.javaforum.api.domain;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.domain.List;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "THREAD")
