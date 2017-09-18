@@ -67,7 +67,7 @@ public class UploadedMedia extends BaseEntity {
     }
 
     @ManyToOne
-    @Column(name = "AUTHOR_USER_ID")
+    @JoinColumn(name = "AUTHOR_USER_ID")
     public User getAuthor() {
         return author;
     }
@@ -87,7 +87,7 @@ public class UploadedMedia extends BaseEntity {
     }
 
     @ManyToOne
-    @Column(name = "POST_UUID")
+    @JoinColumn(name = "POST_UUID")
     public Post getPost() {
         return post;
     }

@@ -38,7 +38,7 @@ public class Post extends BaseEntity {
     }
 
     @ManyToOne
-    @Column(name = "AUTHOR_USER")
+    @JoinColumn(name = "AUTHOR_USER")
     public User getAuthor() {
         return author;
     }
@@ -58,7 +58,7 @@ public class Post extends BaseEntity {
     }
 
     @ManyToOne
-    @Column(name = "THREAD_UUID", nullable = false)
+    @JoinColumn(name = "THREAD_UUID", nullable = false)
     public Thread getThread() {
         return thread;
     }

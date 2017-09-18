@@ -37,7 +37,7 @@ public class Area extends BaseEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "FORUM_ID")
+    @JoinColumn(name = "FORUM_ID")
     public Forum getForum() {
         return forum;
     }

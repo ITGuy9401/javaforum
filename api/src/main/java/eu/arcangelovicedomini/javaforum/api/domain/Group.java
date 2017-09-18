@@ -46,7 +46,7 @@ public class Group extends BaseEntity {
     }
 
     @ManyToOne
-    @Column(name = "FORUM_ID")
+    @JoinColumn(name = "FORUM_ID")
     public Forum getForum() {
         return forum;
     }
@@ -83,7 +83,7 @@ public class Group extends BaseEntity {
     }
 
     @ManyToOne
-    @Column(name = "SECTION_UUID")
+    @JoinColumn(name = "SECTION_UUID")
     public Section getOwnerSection() {
         return ownerSection;
     }

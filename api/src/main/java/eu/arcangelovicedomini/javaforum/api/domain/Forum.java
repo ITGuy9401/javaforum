@@ -74,7 +74,7 @@ public class Forum extends BaseEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "OWNER_ID")
+    @JoinColumn(name = "OWNER_ID")
     public User getOwner() {
         return owner;
     }

@@ -1,7 +1,7 @@
 package eu.arcangelovicedomini.javaforum.api.domain;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.domain.Page;
+import org.springframework.data.domain.List;
 
 import javax.persistence.*;
 
@@ -12,7 +12,7 @@ public class Thread extends BaseEntity {
     private String title;
     private String shortDescription;
     private Section section;
-    private Page<Post> posts;
+    private List<Post> posts;
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -45,7 +45,7 @@ public class Thread extends BaseEntity {
     }
 
     @ManyToOne
-    @Column(name = "SECTION_UUID")
+    @JoinColumn(name = "SECTION_UUID")
     public Section getSection() {
         return section;
     }
@@ -56,11 +56,11 @@ public class Thread extends BaseEntity {
 
     @OneToMany(mappedBy = "THREAD_UUID")
     @OrderBy("creationDate ASC")
-    public Page<Post> getPosts() {
+    public List<Post> getPosts() {
         return posts;
     }
 
-    public void setPosts(Page<Post> posts) {
+    public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
 }

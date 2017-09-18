@@ -1,6 +1,7 @@
 package eu.arcangelovicedomini.javaforum.api.domain;
 
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.time.ZonedDateTime;
 
@@ -20,7 +21,7 @@ public class BaseEntity {
     }
 
     @ManyToOne
-    @Column(name = "CREATED_BY_USER")
+    @JoinColumn(name = "CREATED_BY_USER")
     public User getCreator() {
         return creator;
     }
@@ -39,7 +40,7 @@ public class BaseEntity {
     }
 
     @ManyToOne
-    @Column(name = "LAST_UPDATE_USER")
+    @JoinColumn(name = "LAST_UPDATE_USER")
     public User getLastUpdateUser() {
         return lastUpdateUser;
     }

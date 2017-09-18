@@ -24,7 +24,7 @@ public class UserGroups extends BaseEntity {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @Column(name = "GROUP_ID")
+    @JoinColumn(name = "GROUP_ID")
     public Group getGroup() {
         return group;
     }
@@ -34,7 +34,7 @@ public class UserGroups extends BaseEntity {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @Column(name = "USER_ID")
+    @JoinColumn(name = "USER_ID")
     public User getUser() {
         return user;
     }
