@@ -54,7 +54,7 @@ public class Thread extends BaseEntity {
         this.section = section;
     }
 
-    @OneToMany(mappedBy = "THREAD_UUID")
+    @OneToMany(mappedBy = "thread")
     @OrderBy("creationDate ASC")
     public List<Post> getPosts() {
         return posts;

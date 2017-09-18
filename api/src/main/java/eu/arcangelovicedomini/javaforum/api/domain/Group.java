@@ -92,7 +92,7 @@ public class Group extends BaseEntity {
         this.ownerSection = ownerSection;
     }
 
-    @OneToMany(mappedBy = "GROUP_ID")
+    @OneToMany(mappedBy = "group")
     @OrderBy("username ASC")
     public List<UserGroups> getUsers() {
         return users;

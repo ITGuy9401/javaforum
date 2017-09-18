@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.sql.Blob;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "USER")
@@ -17,6 +18,7 @@ public class User extends BaseEntity {
     private Boolean isMasterAdmin;
     private ZonedDateTime birthDate;
     private ZonedDateTime registrationDate;
+    private List<UserGroups> userGroups;
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -92,5 +94,14 @@ public class User extends BaseEntity {
 
     public void setMasterAdmin(Boolean masterAdmin) {
         isMasterAdmin = masterAdmin;
+    }
+
+    @OneToMany(mappedBy = "user")
+    public List<UserGroups> getUserGroups() {
+        return userGroups;
+    }
+
+    public void setUserGroups(List<UserGroups> userGroups) {
+        this.userGroups = userGroups;
     }
 }
