@@ -72,9 +72,9 @@ public class UserServiceImplTest {
     public void findByEmail() throws Exception {
         User user = new User();
         user.setEmail("fordperfect@hitchhikersguidetothegalaxy.totallynotearth");
-        when(userRepository.findByUsername(user.getUsername())).thenReturn(user);
+        when(userRepository.findByEmail(user.getEmail())).thenReturn(user);
 
-        User byUuid = userService.findByUsername(user.getUsername());
+        User byUuid = userService.findByEmail(user.getEmail());
         assertEquals(byUuid.getUsername(), user.getUsername());
         verify(userRepository, times(1)).findByEmail(user.getEmail());
     }
@@ -112,8 +112,8 @@ public class UserServiceImplTest {
         when(userRepository.findOne(eq(user.getUuid()))).thenReturn(user);
 
         User updatedUser = new User();
-        user.setUuid(user.getUuid());
-        user.setBirthDate(ZonedDateTime.now().minusYears(22));
+        updatedUser.setUuid(user.getUuid());
+        updatedUser.setBirthDate(ZonedDateTime.now().minusYears(22));
         when(userRepository.save(updatedUser)).thenReturn(updatedUser);
 
         User byUuid = userService.updateUser(updatedUser);
@@ -128,7 +128,6 @@ public class UserServiceImplTest {
         User user = new User();
         user.setUuid(UUID.randomUUID().toString());
         user.setBirthDate(ZonedDateTime.now().minusYears(45));
-        when(userRepository.findOne(eq(user.getUuid()))).thenReturn(user);
 
         expectedException.expect(JavaForumException.class);
         expectedException.expect(hasProperty("error", equalTo(Error.USER_NOT_FOUND)));
