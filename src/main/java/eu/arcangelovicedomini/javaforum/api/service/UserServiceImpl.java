@@ -1,6 +1,8 @@
 package eu.arcangelovicedomini.javaforum.api.service;
 
 import eu.arcangelovicedomini.javaforum.api.domain.User;
+import eu.arcangelovicedomini.javaforum.api.exceptions.Error;
+import eu.arcangelovicedomini.javaforum.api.exceptions.JavaForumException;
 import eu.arcangelovicedomini.javaforum.api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +19,11 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User findByUuid(String uuid) {
-    return null;
+      User user = userRepository.findOne(uuid);
+      if (user == null) {
+          throw new JavaForumException(Error.USER_NOT_FOUND);
+      }
+      return user;
   }
 
   @Override
