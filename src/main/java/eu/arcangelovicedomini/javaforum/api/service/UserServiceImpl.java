@@ -20,30 +20,34 @@ public class UserServiceImpl implements UserService {
   @Override
   public User findByUuid(String uuid) {
       User user = userRepository.findOne(uuid);
-      if (user == null) {
-          throw new JavaForumException(Error.USER_NOT_FOUND);
-      }
+      checkNotFoundForGetters(user);
       return user;
   }
 
   @Override
   public User findByName(String username) {
-    return null;
+      User user = userRepository.findByUsername(username);
+      checkNotFoundForGetters(user);
+      return user;
   }
 
   @Override
   public User findByEmail(String email) {
-    return null;
+      User user = userRepository.findByEmail(email);
+      checkNotFoundForGetters(user);
+      return user;
   }
 
   @Override
   public User createUser(User user) {
-    return null;
+      return userRepository.save(user);
   }
 
   @Override
   public User updateUser(User user) {
-    return null;
+      User oldUser = findByUuid(user.getUuid());
+      checkNotFoundForGetters(oldUser);
+      return userRepository.save(user);
   }
 
   @Override
@@ -55,4 +59,10 @@ public class UserServiceImpl implements UserService {
   public void deleteUserByUuid(String uuid) {
     userRepository.delete(uuid);
   }
+
+    private void checkNotFoundForGetters(User user) {
+        if (user == null) {
+            throw new JavaForumException(Error.USER_NOT_FOUND);
+        }
+    }
 }
