@@ -136,10 +136,22 @@ public class UserServiceImplTest {
 
     @Test
     public void deleteUser() throws Exception {
+        User user = new User();
+        user.setUuid(UUID.randomUUID().toString());
+
+        userService.deleteUser(user);
+
+        verify(userRepository).delete(user);
     }
 
     @Test
     public void deleteUserByUuid() throws Exception {
+        User user = new User();
+        user.setUuid(UUID.randomUUID().toString());
+
+        userService.deleteUserByUuid(user.getUuid());
+
+        verify(userRepository).delete(user.getUuid());
     }
 
 }
