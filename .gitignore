@@ -1,21 +1,24 @@
-*.bak
-m2eclipse.bat
-*.log
-*.exc
-*/target/*
-core/.classpath
-*.project
-*.settings
-*.classpath
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
 .idea
-*.idea
-*/.idea
-*/**/.idea
-\.~vaforum Specification\.docx
-
-*.lck
-
-*.bak_000f
-
-*.bak_001d
+*.iws
 *.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
