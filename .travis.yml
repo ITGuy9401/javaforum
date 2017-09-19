@@ -1,4 +1,4 @@
 language: java
 sudo: false
 script: mvn test compile
-after_success: mvn coveralls:report
+after_success: mvn clean test jacoco:report coveralls:report
