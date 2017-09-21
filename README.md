@@ -8,4 +8,4 @@ This project is the CORE project, it contains the kernel of the forum, with expo
 For detailed info please visit the project [Website](https://javaforum-cms.github.io/javaforum-core/)
 
 ## Licence
-JavaForum is published by Arcangelo Vicedomini under the GPLv3 Licence
+JavaForum is published by Arcangelo Vicedomini under the AGPLv3 Licence
