@@ -4,7 +4,6 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.http.MediaType;
 
 import javax.persistence.*;
-import java.sql.Blob;
 
 @Entity
 @Table(name = "UPLOADED_MEDIA")
@@ -15,7 +14,7 @@ public class UploadedMedia extends BaseEntity {
     private Long filesize;
     private MediaType mediaType;
     private User author;
-    private Blob data;
+    private String pathOnServer;
     private Post post;
 
     @Id
@@ -76,14 +75,13 @@ public class UploadedMedia extends BaseEntity {
         this.author = author;
     }
 
-    @Lob
-    @Column(name = "DATA")
-    public Blob getData() {
-        return data;
+    @Column(name = "PATH_ON_SERVER")
+    public String getPathOnServer() {
+        return pathOnServer;
     }
 
-    public void setData(Blob data) {
-        this.data = data;
+    public void setPathOnServer(String pathOnServer) {
+        this.pathOnServer = pathOnServer;
     }
 
     @ManyToOne
