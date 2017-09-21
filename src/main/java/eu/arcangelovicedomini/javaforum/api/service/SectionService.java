@@ -1,4 +1,4 @@
 package eu.arcangelovicedomini.javaforum.api.service;
 
-public class SectionService {
+public interface SectionService {
 }
