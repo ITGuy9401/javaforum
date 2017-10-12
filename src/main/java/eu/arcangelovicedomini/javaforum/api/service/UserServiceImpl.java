@@ -1,7 +1,10 @@
 package eu.arcangelovicedomini.javaforum.api.service;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
+
 import eu.arcangelovicedomini.javaforum.api.domain.User;
 import eu.arcangelovicedomini.javaforum.api.repository.UserRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,27 +20,44 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User findByUuid(String uuid) {
-    return null;
+    return userRepository.findOne(uuid);
   }
 
   @Override
-  public User findByName(String username) {
-    return null;
+  public User findByUsername(String username) {
+    return userRepository.findByUsername(username);
   }
 
   @Override
   public User findByEmail(String email) {
-    return null;
+    return userRepository.findByEmail(email);
   }
 
   @Override
   public User createUser(User user) {
-    return null;
+
+    if (user.getUuid() != null) {
+      throw new RuntimeException("TBD");
+    }
+
+    // FIXME additional validation
+
+    user = userRepository.save(user);
+
+    return user;
   }
 
   @Override
   public User updateUser(User user) {
-    return null;
+    if (isBlank(user.getUuid())) {
+      throw new RuntimeException("TBD");
+    }
+
+    // FIXME additional validation
+
+    user = userRepository.save(user);
+
+    return user;
   }
 
   @Override

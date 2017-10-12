@@ -1,9 +1,10 @@
 package eu.arcangelovicedomini.javaforum.api.service;
 
-import org.aspectj.lang.annotation.Before;
+import org.junit.Before;
 import org.junit.Test;
 
 public class UserServiceImplTest {
+
   @Before
   public void setUp() throws Exception {
   }
