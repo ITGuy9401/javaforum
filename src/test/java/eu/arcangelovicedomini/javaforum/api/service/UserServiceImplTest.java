@@ -1,5 +1,20 @@
 package eu.arcangelovicedomini.javaforum.api.service;
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.time.ZonedDateTime;
+import java.util.UUID;
+
 import eu.arcangelovicedomini.javaforum.api.domain.User;
 import eu.arcangelovicedomini.javaforum.api.exceptions.Error;
 import eu.arcangelovicedomini.javaforum.api.exceptions.JavaForumException;
@@ -8,15 +23,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-
-import java.time.ZonedDateTime;
-import java.util.UUID;
-
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasProperty;
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.*;
 
 public class UserServiceImplTest {
 
