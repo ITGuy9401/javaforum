@@ -1,7 +1,9 @@
 language: java
 sudo: false
-script: mvn test compile
-after_success: mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar \
-    -Dsonar.host.url=https://sonarcloud.io \
-    -Dsonar.organization=itguy9401-github \
-    -Dsonar.login=abcdef0123456789
+addons:
+  sonarcloud:
+    organization: "javaforum-cms" # the key of the org you chose at step #3
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+
