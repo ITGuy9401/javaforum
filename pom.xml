@@ -5,7 +5,7 @@
 
     <groupId>eu.arcangelovicedomini.javaforum</groupId>
     <artifactId>api</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1</version>
     <packaging>jar</packaging>
 
     <name>Javaforum API</name>
