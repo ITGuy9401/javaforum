@@ -89,11 +89,13 @@ public class UserServiceImplTest {
     @Test
     public void createUser() throws Exception {
         User user = new User();
+        user.setEmail("email@example.com");
         user.setBirthDate(ZonedDateTime.now().minusYears(45));
         when(userRepository.save(user)).then((invocation) -> {
             User newUser = new User();
             newUser.setUuid(UUID.randomUUID().toString());
             newUser.setBirthDate(((User) invocation.getArguments()[0]).getBirthDate());
+            newUser.setEmail(((User) invocation.getArguments()[0]).getEmail());
             return newUser;
         });
 
