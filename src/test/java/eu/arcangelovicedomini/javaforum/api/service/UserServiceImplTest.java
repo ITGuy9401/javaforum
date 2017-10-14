@@ -1,28 +1,22 @@
 package eu.arcangelovicedomini.javaforum.api.service;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasProperty;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.time.ZonedDateTime;
-import java.util.UUID;
-
 import eu.arcangelovicedomini.javaforum.api.domain.User;
-import eu.arcangelovicedomini.javaforum.api.exceptions.Error;
-import eu.arcangelovicedomini.javaforum.api.exceptions.JavaForumException;
+import eu.arcangelovicedomini.javaforum.api.exception.JFException;
+import eu.arcangelovicedomini.javaforum.api.exception.JFKeys;
 import eu.arcangelovicedomini.javaforum.api.repository.UserRepository;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import java.time.ZonedDateTime;
+import java.util.UUID;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.junit.Assert.*;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.*;
 
 public class UserServiceImplTest {
 
@@ -51,8 +45,8 @@ public class UserServiceImplTest {
 
     @Test
     public void findByUuidThrowsErrorWhenNotFound() throws Exception {
-        expectedException.expect(JavaForumException.class);
-        expectedException.expect(hasProperty("error", equalTo(Error.USER_NOT_FOUND)));
+        expectedException.expect(JFException.class);
+        expectedException.expect(hasProperty("error", equalTo(JFKeys.USER_NOT_FOUND)));
         userService.findByUuid("FAKE_UUID_BUT_THE_ANSWER_IS_ALWAYS_42");
     }
 
@@ -69,8 +63,8 @@ public class UserServiceImplTest {
 
     @Test
     public void findByUsernameThrowsErrorWhenNotFound() throws Exception {
-        expectedException.expect(JavaForumException.class);
-        expectedException.expect(hasProperty("error", equalTo(Error.USER_NOT_FOUND)));
+        expectedException.expect(JFException.class);
+        expectedException.expect(hasProperty("error", equalTo(JFKeys.USER_NOT_FOUND)));
         userService.findByUsername("SexyFlanders9999");
     }
 
@@ -87,8 +81,8 @@ public class UserServiceImplTest {
 
     @Test
     public void findByEmailThrowsErrorWhenNotFound() throws Exception {
-        expectedException.expect(JavaForumException.class);
-        expectedException.expect(hasProperty("error", equalTo(Error.USER_NOT_FOUND)));
+        expectedException.expect(JFException.class);
+        expectedException.expect(hasProperty("error", equalTo(JFKeys.USER_NOT_FOUND)));
         userService.findByUsername("dr@frankenstein.de");
     }
 
@@ -108,6 +102,27 @@ public class UserServiceImplTest {
         assertNotNull(createdUser.getUuid());
         assertEquals(user.getBirthDate(), createdUser.getBirthDate());
         verify(userRepository, times(1)).save(user);
+    }
+
+    @Test
+    public void createUserThrowsExceptionIfUuidPresent() throws Exception {
+        User user = new User();
+        user.setUuid(UUID.randomUUID().toString());
+        user.setBirthDate(ZonedDateTime.now().minusYears(45));
+
+        expectedException.expect(JFException.class);
+        expectedException.expect(hasProperty("error", equalTo(JFKeys.USER_CREATE_UUID_PRESENT)));
+        userService.createUser(user);
+    }
+
+    @Test
+    public void updateUserThrowsExceptionIfUuidPresent() throws Exception {
+        User user = new User();
+        user.setBirthDate(ZonedDateTime.now().minusYears(45));
+
+        expectedException.expect(JFException.class);
+        expectedException.expect(hasProperty("error", equalTo(JFKeys.USER_MODIFY_UUID_NOT_PRESENT)));
+        userService.updateUser(user);
     }
 
     @Test
@@ -135,8 +150,8 @@ public class UserServiceImplTest {
         user.setUuid(UUID.randomUUID().toString());
         user.setBirthDate(ZonedDateTime.now().minusYears(45));
 
-        expectedException.expect(JavaForumException.class);
-        expectedException.expect(hasProperty("error", equalTo(Error.USER_NOT_FOUND)));
+        expectedException.expect(JFException.class);
+        expectedException.expect(hasProperty("error", equalTo(JFKeys.USER_NOT_FOUND)));
         userService.updateUser(user);
     }
 

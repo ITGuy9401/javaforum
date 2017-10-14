@@ -1,12 +1,13 @@
 package eu.arcangelovicedomini.javaforum.api.service;
 
-import static org.apache.commons.lang3.StringUtils.isBlank;
-
 import eu.arcangelovicedomini.javaforum.api.domain.User;
+import eu.arcangelovicedomini.javaforum.api.exception.JFException;
+import eu.arcangelovicedomini.javaforum.api.exception.JFKeys;
 import eu.arcangelovicedomini.javaforum.api.repository.UserRepository;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import static org.apache.commons.lang3.StringUtils.isBlank;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,24 +21,30 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User findByUuid(String uuid) {
-    return userRepository.findOne(uuid);
+      User user = userRepository.findOne(uuid);
+      if (user == null) throw new JFException(JFKeys.USER_NOT_FOUND);
+      return user;
   }
 
   @Override
   public User findByUsername(String username) {
-    return userRepository.findByUsername(username);
+      User user = userRepository.findByUsername(username);
+      if (user == null) throw new JFException(JFKeys.USER_NOT_FOUND);
+      return user;
   }
 
   @Override
   public User findByEmail(String email) {
-    return userRepository.findByEmail(email);
+      User user = userRepository.findByEmail(email);
+      if (user == null) throw new JFException(JFKeys.USER_NOT_FOUND);
+      return user;
   }
 
   @Override
   public User createUser(User user) {
 
     if (user.getUuid() != null) {
-      throw new RuntimeException("TBD");
+        throw new JFException(JFKeys.USER_CREATE_UUID_PRESENT);
     }
 
     // FIXME additional validation
@@ -50,8 +57,10 @@ public class UserServiceImpl implements UserService {
   @Override
   public User updateUser(User user) {
     if (isBlank(user.getUuid())) {
-      throw new RuntimeException("TBD");
+        throw new JFException(JFKeys.USER_MODIFY_UUID_NOT_PRESENT);
     }
+
+      findByUuid(user.getUuid());
 
     // FIXME additional validation
 

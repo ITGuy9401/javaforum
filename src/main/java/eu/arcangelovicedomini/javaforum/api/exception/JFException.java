@@ -1,20 +1,20 @@
 package eu.arcangelovicedomini.javaforum.api.exception;
 
 public class JFException extends RuntimeException {
-  private JFKeys errorKey;
+    private JFKeys error;
 
   public JFException(JFKeys error) {
     super(error.getMessage());
-    this.errorKey = error;
+      this.error = error;
   }
 
   public JFException(JFKeys error, Throwable cause) {
     super(error.getMessage(), cause);
-    this.errorKey = error;
+      this.error = error;
   }
 
-  public JFKeys getErrorKey() {
-    return errorKey;
+    public JFKeys getError() {
+        return error;
   }
 
 }
