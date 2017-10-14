@@ -121,7 +121,11 @@
             <version>1.6</version>
         </dependency>
     </dependencies>
-
+    <scm>
+        <connection>scm:git:https://github.com/javaforum-cms/javaforum-core.git</connection>
+        <developerConnection>scm:git:https://github.com/javaforum-cms/javaforum-core.git</developerConnection>
+        <url>https://github.com/javaforum-cms/javaforum-core.git</url>
+    </scm>
     <build>
         <plugins>
             <plugin>
