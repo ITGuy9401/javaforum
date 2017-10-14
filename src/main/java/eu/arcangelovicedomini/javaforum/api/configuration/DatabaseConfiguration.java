@@ -31,12 +31,12 @@ public class DatabaseConfiguration {
      */
     @Bean
     public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(env.getProperty("spring.datasource.driver-class-name"));
-        dataSource.setUrl(env.getProperty("spring.datasource.url"));
-        dataSource.setUsername(env.getProperty("spring.datasource.username"));
-        dataSource.setPassword(env.getProperty("spring.datasource.password"));
-        return dataSource;
+        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+        driverManagerDataSource.setDriverClassName(env.getProperty("spring.datasource.driver-class-name"));
+        driverManagerDataSource.setUrl(env.getProperty("spring.datasource.url"));
+        driverManagerDataSource.setUsername(env.getProperty("spring.datasource.username"));
+        driverManagerDataSource.setPassword(env.getProperty("spring.datasource.password"));
+        return driverManagerDataSource;
     }
 
     // Private fields
@@ -46,17 +46,17 @@ public class DatabaseConfiguration {
      */
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean entityManagerFactory =
+        LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactory =
                 new LocalContainerEntityManagerFactoryBean();
 
-        entityManagerFactory.setDataSource(dataSource);
+        localContainerEntityManagerFactory.setDataSource(dataSource);
 
         // Classpath scanning of @Component, @Service, etc annotated class
-        entityManagerFactory.setPackagesToScan("eu.arcangelovicedomini.javaforum.api.*");
+        localContainerEntityManagerFactory.setPackagesToScan("eu.arcangelovicedomini.javaforum.api.*");
 
         // Vendor adapter
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        entityManagerFactory.setJpaVendorAdapter(vendorAdapter);
+        localContainerEntityManagerFactory.setJpaVendorAdapter(vendorAdapter);
 
         // Hibernate properties
         Properties additionalProperties = new Properties();
@@ -69,9 +69,9 @@ public class DatabaseConfiguration {
         additionalProperties.put(
                 "hibernate.hbm2ddl.auto",
                 env.getProperty("hibernate.hbm2ddl.auto"));
-        entityManagerFactory.setJpaProperties(additionalProperties);
+        localContainerEntityManagerFactory.setJpaProperties(additionalProperties);
 
-        return entityManagerFactory;
+        return localContainerEntityManagerFactory;
     }
 
     /**
@@ -79,11 +79,11 @@ public class DatabaseConfiguration {
      */
     @Bean
     public JpaTransactionManager transactionManager() {
-        JpaTransactionManager transactionManager =
+        JpaTransactionManager jpaTransactionManager =
                 new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(
+        jpaTransactionManager.setEntityManagerFactory(
                 entityManagerFactory.getObject());
-        return transactionManager;
+        return jpaTransactionManager;
     }
 
     /**
